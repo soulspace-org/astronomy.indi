@@ -1,0 +1,426 @@
+(#:indi{:type :indi/delProperty, :device "SkySafari", :name nil, :timestamp nil, :message nil}
+ #:indi{:type :indi/delProperty, :device "MoonLite", :name nil, :timestamp nil, :message nil}
+ #:indi{:type :indi/message, :device "ZWO CCD ASI071MC Pro", :timestamp #inst "2020-07-15T23:43:42.000000000-00:00",
+        :message "[DEBUG] Configuration successfully saved."}
+ #:indi{:type :indi/message, :device "ZWO CCD ASI185MC", :timestamp #inst "2020-07-15T23:43:42.000000000-00:00",
+        :message "[DEBUG] Configuration successfully saved."}
+ #:indi{:type :indi/delProperty, :device "Celestron GPS", :name nil, :timestamp nil, :message nil}
+ #:indi{:type :indi/delProperty, :device "ZWO CCD ASI071MC Pro", :name nil, :timestamp nil, :message nil}
+ #:indi{:type :indi/delProperty, :device "ZWO CCD ASI185MC", :name nil, :timestamp nil, :message nil}
+ #:indi{:group "Main Control", :name "CONNECTION", :rule "OneOfMany", :type :indi/defSwitchVector, :state "Idle", :label "Connection",
+        :values (#:indi{:type :indi/defSwitch, :name "CONNECT", :label "Connect", :value :indi/Off}
+                 #:indi{:type :indi/defSwitch, :name "DISCONNECT", :label "Disconnect", :value :indi/On}),
+        :device "SkySafari", :timeout "60", :timestamp #inst "2020-07-15T23:43:42.000000000-00:00",
+        :perm :indi/rw, :message nil}
+ #:indi{:group "General Info", :name "DRIVER_INFO", :type :indi/defTextVector, :state "Idle", :label "Driver Info",
+        :values (#:indi{:type :indi/defText, :name "DRIVER_NAME", :label "Name", :value "SkySafari"}
+                 #:indi{:type :indi/defText, :name "DRIVER_EXEC", :label "Exec", :value "indi_skysafari"} 
+                 #:indi{:type :indi/defText, :name "DRIVER_VERSION", :label "Version", :value "0.2"} 
+                 #:indi{:type :indi/defText, :name "DRIVER_INTERFACE", :label "Interface", :value "32768"}), 
+        :device "SkySafari", :timeout "60", :timestamp #inst "2020-07-15T23:43:42.000000000-00:00",
+        :perm :indi/ro, :message nil}
+ #:indi{:group "Options", :name "DEBUG", :rule "OneOfMany", :type :indi/defSwitchVector, :state "Idle", :label "Debug",
+        :values (#:indi{:type :indi/defSwitch, :name "ENABLE", :label "Enable", :value :indi/Off}
+                 #:indi{:type :indi/defSwitch, :name "DISABLE", :label "Disable", :value :indi/On}),
+        :device "SkySafari", :timeout "0", :timestamp #inst "2020-07-15T23:43:42.000000000-00:00",
+        :perm :indi/rw, :message nil}
+ #:indi{:group "Options", :name "CONFIG_PROCESS", :rule "AtMostOne", :type :indi/defSwitchVector,
+        :state "Idle", :label "Configuration",
+        :values (#:indi{:type :indi/defSwitch, :name "CONFIG_LOAD", :label "Load", :value :indi/Off}
+                  #:indi{:type :indi/defSwitch, :name "CONFIG_SAVE", :label "Save", :value :indi/Off}
+                  #:indi{:type :indi/defSwitch, :name "CONFIG_DEFAULT", :label "Default", :value :indi/Off}
+                  #:indi{:type :indi/defSwitch, :name "CONFIG_PURGE", :label "Purge", :value :indi/Off}),
+        :device "SkySafari", :timeout "0", :timestamp #inst "2020-07-15T23:43:42.000000000-00:00",
+        :perm :indi/rw, :message nil}
+ #:indi{:group "Main Control", :name "CONNECTION", :rule "OneOfMany", :type :indi/defSwitchVector, :state "Idle", :label "Connection",
+        :values (#:indi{:type :indi/defSwitch, :name "CONNECT", :label "Connect", :value :indi/Off}
+                  #:indi{:type :indi/defSwitch, :name "DISCONNECT", :label "Disconnect", :value :indi/On}),
+        :device "MoonLite", :timeout "60", :timestamp #inst "2020-07-15T23:43:42.000000000-00:00",
+        :perm :indi/rw, :message nil}
+ #:indi{:group "Main Control", :name "SKYSAFARI_SETTINGS", :type :indi/defTextVector, :state "Idle", :label "Settings",
+        :values (#:indi{:type :indi/defText, :name "INDISERVER_HOST", :label "indiserver host", :value "localhost"}
+                  #:indi{:type :indi/defText, :name "INDISERVER_PORT", :label "indiserver port", :value "7624"}
+                  #:indi{:type :indi/defText, :name "SKYSAFARI_PORT", :label "SkySafari port", :value "9624"}),
+        :device "SkySafari", :timeout "60", :timestamp #inst "2020-07-15T23:43:42.000000000-00:00",
+        :perm :indi/rw, :message nil}
+ #:indi{:group "Options", :name "ACTIVE_DEVICES", :type :indi/defTextVector, :state "Idle", :label "Active devices",
+        :values (#:indi{:type :indi/defText, :name "ACTIVE_TELESCOPE", :label "Telescope", :value "Telescope Simulator"}),
+        :device "SkySafari", :timeout "60", :timestamp #inst "2020-07-15T23:43:42.000000000-00:00",
+        :perm :indi/rw, :message nil}
+ #:indi{:group "Connection", :name "DRIVER_INFO", :type :indi/defTextVector, :state "Idle", :label "Driver Info",
+        :values (#:indi{:type :indi/defText, :name "DRIVER_NAME", :label "Name", :value "MoonLite"}
+                  #:indi{:type :indi/defText, :name "DRIVER_EXEC", :label "Exec", :value "indi_moonlite_focus"}
+                  #:indi{:type :indi/defText, :name "DRIVER_VERSION", :label "Version", :value "1.1"}
+                  #:indi{:type :indi/defText, :name "DRIVER_INTERFACE", :label "Interface", :value "8"}),
+        :device "MoonLite", :timeout "60", :timestamp #inst "2020-07-15T23:43:42.000000000-00:00",
+        :perm :indi/ro, :message nil}
+ #:indi{:type :indi/setTextVector, :device "SkySafari", :name "SKYSAFARI_SETTINGS", :state "Ok",
+        :timeout "60", :timestamp #inst "2020-07-15T23:43:42.000000000-00:00", :message nil,
+        :values (#:indi{:type :indi/oneText, :name "INDISERVER_HOST", :value "localhost"}
+                  #:indi{:type :indi/oneText, :name "INDISERVER_PORT", :value "7624"}
+                  #:indi{:type :indi/oneText, :name "SKYSAFARI_PORT", :value "9624"})}
+ #:indi{:type :indi/setTextVector, :device "SkySafari", :name "ACTIVE_DEVICES", :state "Ok",
+        :timeout "60", :timestamp #inst "2020-07-15T23:43:42.000000000-00:00", :message nil,
+        :values (#:indi{:type :indi/oneText, :name "ACTIVE_TELESCOPE", :value "Celestron GPS"})}
+ #:indi{:group "Options", :name "DEBUG", :rule "OneOfMany", :type :indi/defSwitchVector, :state "Idle", :label "Debug",
+        :values (#:indi{:type :indi/defSwitch, :name "ENABLE", :label "Enable", :value :indi/Off}
+                  #:indi{:type :indi/defSwitch, :name "DISABLE", :label "Disable", :value :indi/On}),
+        :device "MoonLite", :timeout "0", :timestamp #inst "2020-07-15T23:43:42.000000000-00:00",
+        :perm :indi/rw, :message nil}
+ #:indi{:group "Options", :name "POLLING_PERIOD", :type :indi/defNumberVector, :state "Idle", :label "Polling",
+        :values (#:indi{:type :indi/defNumber, :name "PERIOD_MS", :label "Period (ms)",
+                        :format "%.f", :min "10", :max "600000", :step "1000", :value "500"}),
+        :device "MoonLite", :timeout "0", :timestamp #inst "2020-07-15T23:43:42.000000000-00:00",
+        :perm :indi/rw, :message nil}
+ #:indi{:group "Options", :name "CONFIG_PROCESS", :rule "AtMostOne", :type :indi/defSwitchVector,
+        :state "Idle", :label "Configuration",
+        :values (#:indi{:type :indi/defSwitch, :name "CONFIG_LOAD", :label "Load", :value :indi/Off}
+                  #:indi{:type :indi/defSwitch, :name "CONFIG_SAVE", :label "Save", :value :indi/Off}
+                  #:indi{:type :indi/defSwitch, :name "CONFIG_DEFAULT", :label "Default", :value :indi/Off}
+                  #:indi{:type :indi/defSwitch, :name "CONFIG_PURGE", :label "Purge", :value :indi/Off}),
+        :device "MoonLite", :timeout "0", :timestamp #inst "2020-07-15T23:43:42.000000000-00:00",
+        :perm :indi/rw, :message nil}
+ #:indi{:type :indi/setSwitchVector, :device "MoonLite", :name "DEBUG", :state "Ok", :timeout "0",
+        :timestamp #inst "2020-07-15T23:43:42.000000000-00:00", :message nil,
+        :values (#:indi{:type :indi/oneSwitch, :name "ENABLE", :value :indi/Off}
+                  #:indi{:type :indi/oneSwitch, :name "DISABLE", :value :indi/On})}
+ #:indi{:type :indi/setNumberVector, :device "MoonLite", :name "POLLING_PERIOD", :state "Ok", :timeout "0",
+        :timestamp #inst "2020-07-15T23:43:42.000000000-00:00", :message nil,
+        :values (#:indi{:type :indi/oneNumber, :name "PERIOD_MS", :value "500"})}
+ #:indi{:group "Connection", :name "CONNECTION_MODE", :rule "OneOfMany", :type :indi/defSwitchVector,
+        :state "Idle", :label "Connection Mode",
+        :values (#:indi{:type :indi/defSwitch, :name "CONNECTION_SERIAL", :label "Serial", :value :indi/On}
+                 #:indi{:type :indi/defSwitch, :name "CONNECTION_TCP", :label "Ethernet", :value :indi/Off}),
+        :device "MoonLite", :timeout "60", :timestamp #inst "2020-07-15T23:43:42.000000000-00:00",
+        :perm :indi/rw, :message nil}
+ #:indi{:group "Connection", :name "DEVICE_PORT", :type :indi/defTextVector, :state "Idle", :label "Ports",
+        :values (#:indi{:type :indi/defText, :name "PORT", :label "Port", :value "/dev/ttyUSB1"}),
+        :device "MoonLite", :timeout "60", :timestamp #inst "2020-07-15T23:43:42.000000000-00:00",
+        :perm :indi/rw, :message nil}
+ #:indi{:type :indi/setTextVector, :device "MoonLite", :name "DEVICE_PORT", :state "Ok", :timeout "60",
+        :timestamp #inst "2020-07-15T23:43:42.000000000-00:00", :message nil,
+        :values (#:indi{:type :indi/oneText, :name "PORT", :value "/dev/ttyUSB1"})}
+ #:indi{:group "Connection", :name "DEVICE_BAUD_RATE", :rule "OneOfMany", :type :indi/defSwitchVector,
+        :state "Idle", :label "Baud Rate",
+        :values (#:indi{:type :indi/defSwitch, :name "9600", :label "9600", :value :indi/On}
+                  #:indi{:type :indi/defSwitch, :name "19200", :label "19200", :value :indi/Off}
+                  #:indi{:type :indi/defSwitch, :name "38400", :label "38400", :value :indi/Off}
+                  #:indi{:type :indi/defSwitch, :name "57600", :label "57600", :value :indi/Off}
+                  #:indi{:type :indi/defSwitch, :name "115200", :label "115200", :value :indi/Off}
+                  #:indi{:type :indi/defSwitch, :name "230400", :label "230400", :value :indi/Off}),
+        :device "MoonLite", :timeout "60", :timestamp #inst "2020-07-15T23:43:42.000000000-00:00",
+        :perm :indi/rw, :message nil}
+ #:indi{:type :indi/setSwitchVector, :device "MoonLite", :name "DEVICE_BAUD_RATE", :state "Ok", 
+        :timeout "60", :timestamp #inst "2020-07-15T23:43:42.000000000-00:00", :message nil,
+        :values (#:indi{:type :indi/oneSwitch, :name "9600", :value :indi/On}
+                  #:indi{:type :indi/oneSwitch, :name "19200", :value :indi/Off}
+                  #:indi{:type :indi/oneSwitch, :name "38400", :value :indi/Off}
+                  #:indi{:type :indi/oneSwitch, :name "57600", :value :indi/Off}
+                  #:indi{:type :indi/oneSwitch, :name "115200", :value :indi/Off}
+                  #:indi{:type :indi/oneSwitch, :name "230400", :value :indi/Off})}
+ #:indi{:group "Connection", :name "DEVICE_AUTO_SEARCH", :rule "OneOfMany", :type :indi/defSwitchVector,
+        :state "Idle", :label "Auto Search",
+        :values (#:indi{:type :indi/defSwitch, :name "INDI_ENABLED", :label "Enabled", :value :indi/On}
+                  #:indi{:type :indi/defSwitch, :name "INDI_DISABLED", :label "Disabled", :value :indi/Off}),
+        :device "MoonLite", :timeout "60", :timestamp #inst "2020-07-15T23:43:42.000000000-00:00",
+        :perm :indi/rw, :message nil}
+ #:indi{:type :indi/setSwitchVector, :device "MoonLite", :name "DEVICE_AUTO_SEARCH", :state "Idle",
+        :timeout "60", :timestamp #inst "2020-07-15T23:43:42.000000000-00:00",
+        :message "Error: invalid state switch for property Auto Search (DEVICE_AUTO_SEARCH). No switch is on.",
+        :values (#:indi{:type :indi/oneSwitch, :name "INDI_ENABLED", :value :indi/On}
+                  #:indi{:type :indi/oneSwitch, :name "INDI_DISABLED", :value :indi/Off})}
+ #:indi{:type :indi/setSwitchVector, :device "MoonLite", :name "DEVICE_AUTO_SEARCH", :state "Ok",
+        :timeout "60", :timestamp #inst "2020-07-15T23:43:42.000000000-00:00", :message nil,
+        :values (#:indi{:type :indi/oneSwitch, :name "INDI_ENABLED", :value :indi/On}
+                  #:indi{:type :indi/oneSwitch, :name "INDI_DISABLED", :value :indi/Off})}
+ #:indi{:group "Connection", :name "DEVICE_PORT_SCAN", :rule "OneOfMany", :type :indi/defSwitchVector,
+        :state "Idle", :label "Refresh",
+        :values (#:indi{:type :indi/defSwitch, :name "Scan Ports", :label "Scan Ports", :value :indi/Off}),
+        :device "MoonLite", :timeout "60", :timestamp #inst "2020-07-15T23:43:42.000000000-00:00",
+        :perm :indi/rw, :message nil}
+ #:indi{:group "Main Control", :name "CONNECTION", :rule "OneOfMany", :type :indi/defSwitchVector, :state "Idle",
+        :label "Connection",
+        :values (#:indi{:type :indi/defSwitch, :name "CONNECT", :label "Connect", :value :indi/Off}
+                  #:indi{:type :indi/defSwitch, :name "DISCONNECT", :label "Disconnect", :value :indi/On}),
+        :device "Celestron GPS", :timeout "60", :timestamp #inst "2020-07-15T23:43:42.000000000-00:00",
+        :perm :indi/rw, :message nil}
+ #:indi{:group "Connection", :name "DRIVER_INFO", :type :indi/defTextVector, :state "Idle", :label "Driver Info",
+        :values (#:indi{:type :indi/defText, :name "DRIVER_NAME", :label "Name", :value "Celestron GPS"}
+                  #:indi{:type :indi/defText, :name "DRIVER_EXEC", :label "Exec", :value "indi_celestron_gps"}
+                  #:indi{:type :indi/defText, :name "DRIVER_VERSION", :label "Version", :value "3.4"}
+                  #:indi{:type :indi/defText, :name "DRIVER_INTERFACE", :label "Interface", :value "5"}),
+        :device "Celestron GPS", :timeout "60", :timestamp #inst "2020-07-15T23:43:42.000000000-00:00",
+        :perm :indi/ro, :message nil}
+ #:indi{:group "Options", :name "POLLING_PERIOD", :type :indi/defNumberVector, :state "Idle", :label "Polling",
+        :values (#:indi{:type :indi/defNumber, :name "PERIOD_MS", :label "Period (ms)",
+                        :format "%.f", :min "10", :max "600000", :step "1000", :value "1000"}),
+        :device "Celestron GPS", :timeout "0", :timestamp #inst "2020-07-15T23:43:42.000000000-00:00",
+        :perm :indi/rw, :message nil}
+ #:indi{:group "Options", :name "DEBUG", :rule "OneOfMany", :type :indi/defSwitchVector, :state "Idle", :label "Debug",
+        :values (#:indi{:type :indi/defSwitch, :name "ENABLE", :label "Enable", :value :indi/Off}
+                  #:indi{:type :indi/defSwitch, :name "DISABLE", :label "Disable", :value :indi/On}),
+        :device "Celestron GPS", :timeout "0", :timestamp #inst "2020-07-15T23:43:42.000000000-00:00",
+        :perm :indi/rw, :message nil}
+ #:indi{:group "Options", :name "SIMULATION", :rule "OneOfMany", :type :indi/defSwitchVector, :state "Idle", :label "Simulation",
+        :values (#:indi{:type :indi/defSwitch, :name "ENABLE", :label "Enable", :value :indi/Off}
+                  #:indi{:type :indi/defSwitch, :name "DISABLE", :label "Disable", :value :indi/On}),
+        :device "Celestron GPS", :timeout "0", :timestamp #inst "2020-07-15T23:43:42.000000000-00:00",
+        :perm :indi/rw, :message nil}
+ #:indi{:group "Options", :name "CONFIG_PROCESS", :rule "AtMostOne", :type :indi/defSwitchVector,
+        :state "Idle", :label "Configuration", 
+        :values (#:indi{:type :indi/defSwitch, :name "CONFIG_LOAD", :label "Load", :value :indi/Off}
+                  #:indi{:type :indi/defSwitch, :name "CONFIG_SAVE", :label "Save", :value :indi/Off}
+                  #:indi{:type :indi/defSwitch, :name "CONFIG_DEFAULT", :label "Default", :value :indi/Off}
+                  #:indi{:type :indi/defSwitch, :name "CONFIG_PURGE", :label "Purge", :value :indi/Off}),
+        :device "Celestron GPS", :timeout "0", :timestamp #inst "2020-07-15T23:43:42.000000000-00:00",
+        :perm :indi/rw, :message nil}
+ #:indi{:type :indi/setSwitchVector, :device "Celestron GPS", :name "DEBUG", :state "Ok", :timeout "0", 
+        :timestamp #inst "2020-07-15T23:43:42.000000000-00:00", :message nil,
+        :values (#:indi{:type :indi/oneSwitch, :name "ENABLE", :value :indi/Off}
+                  #:indi{:type :indi/oneSwitch, :name "DISABLE", :value :indi/On})}
+ #:indi{:group "Connection", :name "SYSTEM_PORTS", :rule "AtMostOne", :type :indi/defSwitchVector,
+        :state "Idle", :label "System Ports",
+        :values (#:indi{:type :indi/defSwitch, :name "/dev/ttyUSB0", :label "/dev/ttyUSB0", :value :indi/Off}
+                  #:indi{:type :indi/defSwitch, :name "/dev/ttyUSB1", :label "/dev/ttyUSB1", :value :indi/Off}),
+        :device "MoonLite", :timeout "60", :timestamp #inst "2020-07-15T23:43:42.000000000-00:00",
+        :perm :indi/rw, :message nil}
+ #:indi{:group "Connection", :name "DEVICE_PORT", :type :indi/defTextVector, :state "Ok", :label "Ports",
+        :values (#:indi{:type :indi/defText, :name "PORT", :label "Port", :value "/dev/ttyUSB1"}),
+        :device "MoonLite", :timeout "60", :timestamp #inst "2020-07-15T23:43:42.000000000-00:00",
+        :perm :indi/rw, :message nil}
+ #:indi{:type :indi/setNumberVector, :device "Celestron GPS", :name "POLLING_PERIOD", :state "Ok", :timeout "0",
+        :timestamp #inst "2020-07-15T23:43:42.000000000-00:00", :message nil,
+        :values (#:indi{:type :indi/oneNumber, :name "PERIOD_MS", :value "1000"})}
+ #:indi{:type :indi/setTextVector, :device "MoonLite", :name "DEVICE_PORT", :state "Ok", :timeout "60",
+        :timestamp #inst "2020-07-15T23:43:42.000000000-00:00", :message nil,
+        :values (#:indi{:type :indi/oneText, :name "PORT", :value "/dev/ttyUSB1"})}
+ #:indi{:group "Connection", :name "DEVICE_BAUD_RATE", :rule "OneOfMany", :type :indi/defSwitchVector,
+        :state "Ok", :label "Baud Rate",
+        :values (#:indi{:type :indi/defSwitch, :name "9600", :label "9600", :value :indi/On}
+                  #:indi{:type :indi/defSwitch, :name "19200", :label "19200", :value :indi/Off}
+                  #:indi{:type :indi/defSwitch, :name "38400", :label "38400", :value :indi/Off}
+                  #:indi{:type :indi/defSwitch, :name "57600", :label "57600", :value :indi/Off}
+                  #:indi{:type :indi/defSwitch, :name "115200", :label "115200", :value :indi/Off}
+                  #:indi{:type :indi/defSwitch, :name "230400", :label "230400", :value :indi/Off}),
+        :device "MoonLite", :timeout "60", :timestamp #inst "2020-07-15T23:43:42.000000000-00:00",
+        :perm :indi/rw, :message nil}
+ #:indi{:type :indi/setSwitchVector, :device "MoonLite", :name "DEVICE_BAUD_RATE", :state "Ok", :timeout "60",
+        :timestamp #inst "2020-07-15T23:43:42.000000000-00:00", :message nil,
+        :values (#:indi{:type :indi/oneSwitch, :name "9600", :value :indi/On}
+                  #:indi{:type :indi/oneSwitch, :name "19200", :value :indi/Off}
+                  #:indi{:type :indi/oneSwitch, :name "38400", :value :indi/Off}
+                  #:indi{:type :indi/oneSwitch, :name "57600", :value :indi/Off}
+                  #:indi{:type :indi/oneSwitch, :name "115200", :value :indi/Off}
+                  #:indi{:type :indi/oneSwitch, :name "230400", :value :indi/Off})}
+ #:indi{:group "Connection", :name "DEVICE_AUTO_SEARCH", :rule "OneOfMany", :type :indi/defSwitchVector, :state "Ok",
+        :label "Auto Search",
+        :values (#:indi{:type :indi/defSwitch, :name "INDI_ENABLED", :label "Enabled", :value :indi/On}
+                  #:indi{:type :indi/defSwitch, :name "INDI_DISABLED", :label "Disabled", :value :indi/Off}),
+        :device "MoonLite", :timeout "60", :timestamp #inst "2020-07-15T23:43:42.000000000-00:00",
+        :perm :indi/rw, :message nil}
+ #:indi{:group "Connection", :name "CONNECTION_MODE", :rule "OneOfMany", :type :indi/defSwitchVector,
+        :state "Idle", :label "Connection Mode",
+        :values (#:indi{:type :indi/defSwitch, :name "CONNECTION_SERIAL", :label "Serial", :value :indi/On}
+                  #:indi{:type :indi/defSwitch, :name "CONNECTION_TCP", :label "Ethernet", :value :indi/Off}),
+        :device "Celestron GPS", :timeout "60", :timestamp #inst "2020-07-15T23:43:42.000000000-00:00",
+        :perm :indi/rw, :message nil}
+ #:indi{:group "Connection", :name "DEVICE_PORT", :type :indi/defTextVector, :state "Idle", :label "Ports", 
+        :values (#:indi{:type :indi/defText, :name "PORT", :label "Port", :value "/dev/cgem"}),
+        :device "Celestron GPS", :timeout "60", :timestamp #inst "2020-07-15T23:43:42.000000000-00:00",
+        :perm :indi/rw, :message nil}
+ #:indi{:type :indi/setSwitchVector, :device "MoonLite", :name "DEVICE_AUTO_SEARCH", :state "Idle", 
+        :timeout "60", :timestamp #inst "2020-07-15T23:43:42.000000000-00:00",
+        :message "Error: invalid state switch for property Auto Search (DEVICE_AUTO_SEARCH). No switch is on.",
+        :values (#:indi{:type :indi/oneSwitch, :name "INDI_ENABLED", :value :indi/On}
+                  #:indi{:type :indi/oneSwitch, :name "INDI_DISABLED", :value :indi/Off})}
+ #:indi{:type :indi/setSwitchVector, :device "MoonLite", :name "DEVICE_AUTO_SEARCH", :state "Ok", :timeout "60",
+        :timestamp #inst "2020-07-15T23:43:42.000000000-00:00", :message nil,
+        :values (#:indi{:type :indi/oneSwitch, :name "INDI_ENABLED", :value :indi/On}
+                  #:indi{:type :indi/oneSwitch, :name "INDI_DISABLED", :value :indi/Off})}
+ #:indi{:group "Connection", :name "DEVICE_PORT_SCAN", :rule "OneOfMany", :type :indi/defSwitchVector,
+        :state "Idle", :label "Refresh",
+        :values (#:indi{:type :indi/defSwitch, :name "Scan Ports", :label "Scan Ports", :value :indi/Off}),
+        :device "MoonLite", :timeout "60", :timestamp #inst "2020-07-15T23:43:42.000000000-00:00",
+        :perm :indi/rw, :message nil}
+ #:indi{:type :indi/setTextVector, :device "Celestron GPS", :name "DEVICE_PORT", :state "Ok",
+        :timeout "60", :timestamp #inst "2020-07-15T23:43:42.000000000-00:00", :message nil,
+        :values (#:indi{:type :indi/oneText, :name "PORT", :value "/dev/cgem"})}
+ #:indi{:group "Connection", :name "DEVICE_BAUD_RATE", :rule "OneOfMany",
+        :type :indi/defSwitchVector, :state "Idle", :label "Baud Rate",
+        :values (#:indi{:type :indi/defSwitch, :name "9600", :label "9600", :value :indi/On}
+                  #:indi{:type :indi/defSwitch, :name "19200", :label "19200", :value :indi/Off}
+                  #:indi{:type :indi/defSwitch, :name "38400", :label "38400", :value :indi/Off}
+                  #:indi{:type :indi/defSwitch, :name "57600", :label "57600", :value :indi/Off}
+                  #:indi{:type :indi/defSwitch, :name "115200", :label "115200", :value :indi/Off}
+                  #:indi{:type :indi/defSwitch, :name "230400", :label "230400", :value :indi/Off}),
+        :device "Celestron GPS", :timeout "60", :timestamp #inst "2020-07-15T23:43:42.000000000-00:00",
+        :perm :indi/rw, :message nil}
+ #:indi{:type :indi/setSwitchVector, :device "Celestron GPS", :name "DEVICE_BAUD_RATE", :state "Ok", 
+        :timeout "60", :timestamp #inst "2020-07-15T23:43:42.000000000-00:00", :message nil, 
+        :values (#:indi{:type :indi/oneSwitch, :name "9600", :value :indi/On}
+                  #:indi{:type :indi/oneSwitch, :name "19200", :value :indi/Off}
+                  #:indi{:type :indi/oneSwitch, :name "38400", :value :indi/Off}
+                  #:indi{:type :indi/oneSwitch, :name "57600", :value :indi/Off}
+                  #:indi{:type :indi/oneSwitch, :name "115200", :value :indi/Off}
+                  #:indi{:type :indi/oneSwitch, :name "230400", :value :indi/Off})}
+ #:indi{:group "Connection", :name "DEVICE_AUTO_SEARCH", :rule "OneOfMany", :type :indi/defSwitchVector,
+        :state "Idle", :label "Auto Search",
+        :values (#:indi{:type :indi/defSwitch, :name "INDI_ENABLED", :label "Enabled", :value :indi/On}
+                  #:indi{:type :indi/defSwitch, :name "INDI_DISABLED", :label "Disabled", :value :indi/Off}),
+        :device "Celestron GPS", :timeout "60", :timestamp #inst "2020-07-15T23:43:42.000000000-00:00",
+        :perm :indi/rw, :message nil}
+ #:indi{:type :indi/message, :device "Celestron GPS", :timestamp #inst "2020-07-15T23:43:42.000000000-00:00", 
+        :message "[INFO] Auto search is disabled."}
+ #:indi{:type :indi/setSwitchVector, :device "Celestron GPS", :name "DEVICE_AUTO_SEARCH", :state "Ok",
+        :timeout "60", :timestamp #inst "2020-07-15T23:43:42.000000000-00:00", :message nil,
+        :values (#:indi{:type :indi/oneSwitch, :name "INDI_ENABLED", :value :indi/Off}
+                  #:indi{:type :indi/oneSwitch, :name "INDI_DISABLED", :value :indi/On})}
+ #:indi{:group "Connection", :name "DEVICE_PORT_SCAN", :rule "OneOfMany", :type :indi/defSwitchVector, 
+        :state "Idle", :label "Refresh",
+        :values (#:indi{:type :indi/defSwitch, :name "Scan Ports", :label "Scan Ports", :value :indi/Off}), 
+        :device "Celestron GPS", :timeout "60", :timestamp #inst "2020-07-15T23:43:42.000000000-00:00",
+        :perm :indi/rw, :message nil}
+ #:indi{:type :indi/delProperty, :device "MoonLite", :name "SYSTEM_PORTS", :timestamp #inst "2020-07-15T23:43:42.000000000-00:00",
+        :message nil}
+ #:indi{:group "Connection", :name "SYSTEM_PORTS", :rule "AtMostOne", :type :indi/defSwitchVector,
+        :state "Idle", :label "System Ports",
+        :values (#:indi{:type :indi/defSwitch, :name "/dev/ttyUSB0", :label "/dev/ttyUSB0", :value :indi/Off}
+                  #:indi{:type :indi/defSwitch, :name "/dev/ttyUSB1", :label "/dev/ttyUSB1", :value :indi/Off}),
+        :device "MoonLite", :timeout "60", :timestamp #inst "2020-07-15T23:43:42.000000000-00:00",
+        :perm :indi/rw, :message nil}
+ #:indi{:type :indi/setSwitchVector, :device "MoonLite", :name "CONNECTION_MODE", :state "Ok",
+        :timeout "60", :timestamp #inst "2020-07-15T23:43:42.000000000-00:00", :message nil,
+        :values (#:indi{:type :indi/oneSwitch, :name "CONNECTION_SERIAL", :value :indi/On} 
+                  #:indi{:type :indi/oneSwitch, :name "CONNECTION_TCP", :value :indi/Off})}
+ #:indi{:group "Connection", :name "SYSTEM_PORTS", :rule "AtMostOne", :type :indi/defSwitchVector,
+        :state "Idle", :label "System Ports",
+        :values (#:indi{:type :indi/defSwitch, :name "/dev/ttyUSB0", :label "/dev/ttyUSB0", :value :indi/Off}
+                  #:indi{:type :indi/defSwitch, :name "/dev/ttyUSB1", :label "/dev/ttyUSB1", :value :indi/Off}),
+        :device "Celestron GPS", :timeout "60", :timestamp #inst "2020-07-15T23:43:42.000000000-00:00",
+        :perm :indi/rw, :message nil}
+ #:indi{:group "Connection", :name "DEVICE_PORT", :type :indi/defTextVector, :state "Ok", :label "Ports",
+        :values (#:indi{:type :indi/defText, :name "PORT", :label "Port", :value "/dev/cgem"}),
+        :device "Celestron GPS", :timeout "60", :timestamp #inst "2020-07-15T23:43:42.000000000-00:00",
+        :perm :indi/rw, :message nil}
+ #:indi{:type :indi/setTextVector, :device "Celestron GPS", :name "DEVICE_PORT", :state "Ok",
+        :timeout "60", :timestamp #inst "2020-07-15T23:43:42.000000000-00:00", :message nil,
+        :values (#:indi{:type :indi/oneText, :name "PORT", :value "/dev/cgem"})}
+ #:indi{:type :indi/setSwitchVector, :device "Celestron GPS", :name "DEVICE_AUTO_SEARCH",
+        :state "Ok", :timeout "60", :timestamp #inst "2020-07-15T23:43:42.000000000-00:00", :message nil,
+        :values (#:indi{:type :indi/oneSwitch, :name "INDI_ENABLED", :value :indi/Off}
+                  #:indi{:type :indi/oneSwitch, :name "INDI_DISABLED", :value :indi/On})}
+ #:indi{:group "Connection", :name "DEVICE_BAUD_RATE", :rule "OneOfMany", :type :indi/defSwitchVector,
+        :state "Ok", :label "Baud Rate",
+        :values (#:indi{:type :indi/defSwitch, :name "9600", :label "9600", :value :indi/On}
+                  #:indi{:type :indi/defSwitch, :name "19200", :label "19200", :value :indi/Off}
+                  #:indi{:type :indi/defSwitch, :name "38400", :label "38400", :value :indi/Off}
+                  #:indi{:type :indi/defSwitch, :name "57600", :label "57600", :value :indi/Off}
+                  #:indi{:type :indi/defSwitch, :name "115200", :label "115200", :value :indi/Off}
+                  #:indi{:type :indi/defSwitch, :name "230400", :label "230400", :value :indi/Off}),
+        :device "Celestron GPS", :timeout "60", :timestamp #inst "2020-07-15T23:43:42.000000000-00:00",
+        :perm :indi/rw, :message nil}
+ #:indi{:type :indi/setSwitchVector, :device "Celestron GPS", :name "DEVICE_BAUD_RATE", :state "Ok",
+        :timeout "60", :timestamp #inst "2020-07-15T23:43:42.000000000-00:00", :message nil,
+        :values (#:indi{:type :indi/oneSwitch, :name "9600", :value :indi/On}
+                  #:indi{:type :indi/oneSwitch, :name "19200", :value :indi/Off}
+                  #:indi{:type :indi/oneSwitch, :name "38400", :value :indi/Off}
+                  #:indi{:type :indi/oneSwitch, :name "57600", :value :indi/Off}
+                  #:indi{:type :indi/oneSwitch, :name "115200", :value :indi/Off}
+                  #:indi{:type :indi/oneSwitch, :name "230400", :value :indi/Off})}
+ #:indi{:group "Connection", :name "DEVICE_AUTO_SEARCH", :rule "OneOfMany",
+        :type :indi/defSwitchVector, :state "Ok", :label "Auto Search",
+        :values (#:indi{:type :indi/defSwitch, :name "INDI_ENABLED", :label "Enabled", :value :indi/Off}
+                  #:indi{:type :indi/defSwitch, :name "INDI_DISABLED", :label "Disabled", :value :indi/On}),
+        :device "Celestron GPS", :timeout "60", :timestamp #inst "2020-07-15T23:43:42.000000000-00:00",
+        :perm :indi/rw, :message nil}
+ #:indi{:type :indi/setSwitchVector, :device "Celestron GPS", :name "DEVICE_AUTO_SEARCH", :state "Ok",
+        :timeout "60", :timestamp #inst "2020-07-15T23:43:42.000000000-00:00", :message nil,
+        :values (#:indi{:type :indi/oneSwitch, :name "INDI_ENABLED", :value :indi/Off}
+                  #:indi{:type :indi/oneSwitch, :name "INDI_DISABLED", :value :indi/On})}
+ #:indi{:group "Connection", :name "DEVICE_PORT_SCAN", :rule "OneOfMany", 
+        :type :indi/defSwitchVector, :state "Idle", :label "Refresh",
+        :values (#:indi{:type :indi/defSwitch, :name "Scan Ports", :label "Scan Ports", :value :indi/Off}),
+        :device "Celestron GPS", :timeout "60", :timestamp #inst "2020-07-15T23:43:42.000000000-00:00",
+        :perm :indi/rw, :message nil}
+ #:indi{:type :indi/delProperty, :device "Celestron GPS", :name "SYSTEM_PORTS",
+        :timestamp #inst "2020-07-15T23:43:42.000000000-00:00", :message nil}
+ #:indi{:group "Connection", :name "SYSTEM_PORTS", :rule "AtMostOne",
+        :type :indi/defSwitchVector, :state "Idle", :label "System Ports",
+        :values (#:indi{:type :indi/defSwitch, :name "/dev/ttyUSB0", :label "/dev/ttyUSB0", :value :indi/Off}
+                  #:indi{:type :indi/defSwitch, :name "/dev/ttyUSB1", :label "/dev/ttyUSB1", :value :indi/Off}),
+        :device "Celestron GPS", :timeout "60", :timestamp #inst "2020-07-15T23:43:42.000000000-00:00",
+        :perm :indi/rw, :message nil}
+ #:indi{:type :indi/setSwitchVector, :device "Celestron GPS", :name "CONNECTION_MODE",
+        :state "Ok", :timeout "60", :timestamp #inst "2020-07-15T23:43:42.000000000-00:00", :message nil,
+        :values (#:indi{:type :indi/oneSwitch, :name "CONNECTION_SERIAL", :value :indi/On}
+                  #:indi{:type :indi/oneSwitch, :name "CONNECTION_TCP", :value :indi/Off})}
+ #:indi{:group "Options", :name "ACTIVE_DEVICES", :type :indi/defTextVector,
+        :state "Idle", :label "Snoop devices",
+        :values (#:indi{:type :indi/defText, :name "ACTIVE_GPS", :label "GPS", :value "GPS Simulator"}
+                  #:indi{:type :indi/defText, :name "ACTIVE_DOME", :label "DOME", :value "Dome Simulator"}),
+        :device "Celestron GPS", :timeout "60", :timestamp #inst "2020-07-15T23:43:42.000000000-00:00",
+        :perm :indi/rw, :message nil}
+ #:indi{:type :indi/setTextVector, :device "Celestron GPS", :name "ACTIVE_DEVICES", :state "Ok", 
+        :timeout "60", :timestamp #inst "2020-07-15T23:43:42.000000000-00:00", :message nil,
+        :values (#:indi{:type :indi/oneText, :name "ACTIVE_GPS", :value "GPS Simulator"}
+                  #:indi{:type :indi/oneText, :name "ACTIVE_DOME", :value "Dome Simulator"})}
+ #:indi{:group "Options", :name "DOME_POLICY", :rule "OneOfMany",
+        :type :indi/defSwitchVector, :state "Idle", :label "Dome parking policy", 
+        :values (#:indi{:type :indi/defSwitch, :name "NO_ACTION", :label "Ignore dome", :value :indi/On}
+                  #:indi{:type :indi/defSwitch, :name "LOCK_PARKING", :label "Dome locks", :value :indi/Off}
+                  #:indi{:type :indi/defSwitch, :name "FORCE_CLOSE", :label "Dome parks", :value :indi/Off}
+                  #:indi{:type :indi/defSwitch, :name "LOCK_AND_FORCE", :label "Both", :value :indi/Off}), 
+        :device "Celestron GPS", :timeout "60", :timestamp #inst "2020-07-15T23:43:42.000000000-00:00",
+        :perm :indi/rw, :message nil}
+ #:indi{:type :indi/setSwitchVector, :device "Celestron GPS", :name "DOME_POLICY",
+        :state "Ok", :timeout "60", :timestamp #inst "2020-07-15T23:43:42.000000000-00:00", :message nil,
+        :values (#:indi{:type :indi/oneSwitch, :name "NO_ACTION", :value :indi/On}
+                  #:indi{:type :indi/oneSwitch, :name "LOCK_PARKING", :value :indi/Off}
+                  #:indi{:type :indi/oneSwitch, :name "FORCE_CLOSE", :value :indi/Off}
+                  #:indi{:type :indi/oneSwitch, :name "LOCK_AND_FORCE", :value :indi/Off})}
+ #:indi{:group "Options", :name "TELESCOPE_INFO", :type :indi/defNumberVector, :state "Ok", :label "Scope Properties",
+        :values (#:indi{:type :indi/defNumber, :name "TELESCOPE_APERTURE", :label "Aperture (mm)", :format "%g",
+                        :min "10", :max "5000", :step "0", :value "0"}
+                  #:indi{:type :indi/defNumber, :name "TELESCOPE_FOCAL_LENGTH", :label "Focal Length (mm)", :format "%g",
+                         :min "10", :max "10000", :step "0", :value "0"}
+                  #:indi{:type :indi/defNumber, :name "GUIDER_APERTURE", :label "Guider Aperture (mm)", :format "%g",
+                         :min "10", :max "5000", :step "0", :value "0"}
+                  #:indi{:type :indi/defNumber, :name "GUIDER_FOCAL_LENGTH", :label "Guider Focal Length (mm)", :format "%g",
+                         :min "10", :max "10000", :step "0", :value "0"}),
+        :device "Celestron GPS", :timeout "60", :timestamp #inst "2020-07-15T23:43:42.000000000-00:00",
+        :perm :indi/rw, :message nil}
+ #:indi{:group "Options", :name "SCOPE_CONFIG_NAME", :type :indi/defTextVector,
+        :state "Ok", :label "Scope Name",
+        :values (#:indi{:type :indi/defText, :name "SCOPE_CONFIG_NAME", :label "Config Name", :value ""}),
+        :device "Celestron GPS", :timeout "60", :timestamp #inst "2020-07-15T23:43:42.000000000-00:00",
+        :perm :indi/rw, :message nil}
+ #:indi{:type :indi/setNumberVector, :device "Celestron GPS", :name "TELESCOPE_INFO",
+        :state "Ok", :timeout "60", :timestamp #inst "2020-07-15T23:43:42.000000000-00:00", :message nil, 
+        :values (#:indi{:type :indi/oneNumber, :name "TELESCOPE_APERTURE", :value "235"}
+                  #:indi{:type :indi/oneNumber, :name "TELESCOPE_FOCAL_LENGTH", :value "2350"}
+                  #:indi{:type :indi/oneNumber, :name "GUIDER_APERTURE", :value "60"}
+                  #:indi{:type :indi/oneNumber, :name "GUIDER_FOCAL_LENGTH", :value "240"})}
+ #:indi{:type :indi/setTextVector, :device "Celestron GPS", :name "SCOPE_CONFIG_NAME",
+        :state "Ok", :timeout "60", :timestamp #inst "2020-07-15T23:43:42.000000000-00:00", :message nil,
+        :values (#:indi{:type :indi/oneText, :name "SCOPE_CONFIG_NAME", :value ""})}
+ #:indi{:group "Options", :name "Hibernate", :rule "OneOfMany",
+        :type :indi/defSwitchVector, :state "Idle", :label "Hibernate", 
+        :values (#:indi{:type :indi/defSwitch, :name "Enable", :label "Enable", :value :indi/Off}
+                  #:indi{:type :indi/defSwitch, :name "Disable", :label "Disable", :value :indi/On}),
+        :device "Celestron GPS", :timeout "0", :timestamp #inst "2020-07-15T23:43:42.000000000-00:00",
+        :perm :indi/rw, :message nil}
+ #:indi{:group "Mount Info", :name "CELESTRON_TRACK_MODE", :rule "OneOfMany",
+        :type :indi/defSwitchVector, :state "Idle", :label "Track Mode",
+        :values (#:indi{:type :indi/defSwitch, :name "MODE_ALTAZ", :label "Alt Az", :value :indi/Off}
+                  #:indi{:type :indi/defSwitch, :name "MODE_EQ_N", :label "EQ N", :value :indi/On}
+                  #:indi{:type :indi/defSwitch, :name "MODE_EQ_S", :label "EQ S", :value :indi/Off}
+                  #:indi{:type :indi/defSwitch, :name "MODE_RA_DEC", :label "Ra and Dec", :value :indi/Off}),
+        :device "Celestron GPS", :timeout "0", :timestamp #inst "2020-07-15T23:43:42.000000000-00:00",
+        :perm :indi/ro, :message nil}
+ #:indi{:type :indi/setSwitchVector, :device "Celestron GPS", :name "Hibernate",
+        :state "Idle", :timeout "0", :timestamp #inst "2020-07-15T23:43:42.000000000-00:00", :message nil,
+        :values (#:indi{:type :indi/oneSwitch, :name "Enable", :value :indi/Off}
+                  #:indi{:type :indi/oneSwitch, :name "Disable", :value :indi/On})})
+
+
+

@@ -1,0 +1,1032 @@
+<message device="ZWO CCD ASI071MC Pro" timestamp="2020-06-30T23:40:17" message="[DEBUG] Configuration successfully saved."/>
+<message device="ZWO CCD ASI071MC Pro" timestamp="2020-06-30T23:40:17" message="[DEBUG] Closing ZWO CCD ASI071MC Pro..."/>
+<message device="ZWO CCD ASI071MC Pro" timestamp="2020-06-30T23:40:17" message="[INFO] Camera is offline."/>
+<message device="ZWO CCD ASI185MC" timestamp="2020-06-30T23:40:17" message="[DEBUG] Configuration successfully saved."/>
+<message device="ZWO CCD ASI185MC" timestamp="2020-06-30T23:40:17" message="[DEBUG] Closing ZWO CCD ASI185MC..."/>
+<delProperty device="MoonLite"/>
+<delProperty device="SkySafari"/>
+<defSwitchVector device="SkySafari" name="CONNECTION" label="Connection" group="Main Control" state="Idle" perm="rw" rule="OneOfMany" timeout="60" timestamp="2020-06-30T23:40:17">
+    <defSwitch name="CONNECT" label="Connect">
+Off
+    </defSwitch>
+    <defSwitch name="DISCONNECT" label="Disconnect">
+On
+    </defSwitch>
+</defSwitchVector>
+<defTextVector device="SkySafari" name="DRIVER_INFO" label="Driver Info" group="General Info" state="Idle" perm="ro" timeout="60" timestamp="2020-06-30T23:40:17">
+    <defText name="DRIVER_NAME" label="Name">
+SkySafari
+    </defText>
+    <defText name="DRIVER_EXEC" label="Exec">
+indi_skysafari
+    </defText>
+    <defText name="DRIVER_VERSION" label="Version">
+0.2
+    </defText>
+    <defText name="DRIVER_INTERFACE" label="Interface">
+32768
+    </defText>
+</defTextVector>
+<defSwitchVector device="SkySafari" name="DEBUG" label="Debug" group="Options" state="Idle" perm="rw" rule="OneOfMany" timeout="0" timestamp="2020-06-30T23:40:17">
+    <defSwitch name="ENABLE" label="Enable">
+Off
+    </defSwitch>
+    <defSwitch name="DISABLE" label="Disable">
+On
+    </defSwitch>
+</defSwitchVector>
+<defSwitchVector device="SkySafari" name="CONFIG_PROCESS" label="Configuration" group="Options" state="Idle" perm="rw" rule="AtMostOne" timeout="0" timestamp="2020-06-30T23:40:17">
+    <defSwitch name="CONFIG_LOAD" label="Load">
+Off
+    </defSwitch>
+    <defSwitch name="CONFIG_SAVE" label="Save">
+Off
+    </defSwitch>
+    <defSwitch name="CONFIG_DEFAULT" label="Default">
+Off
+    </defSwitch>
+    <defSwitch name="CONFIG_PURGE" label="Purge">
+Off
+    </defSwitch>
+</defSwitchVector>
+<defTextVector device="SkySafari" name="SKYSAFARI_SETTINGS" label="Settings" group="Main Control" state="Idle" perm="rw" timeout="60" timestamp="2020-06-30T23:40:17">
+    <defText name="INDISERVER_HOST" label="indiserver host">
+localhost
+    </defText>
+    <defText name="INDISERVER_PORT" label="indiserver port">
+7624
+    </defText>
+    <defText name="SKYSAFARI_PORT" label="SkySafari port">
+9624
+    </defText>
+</defTextVector>
+<defTextVector device="SkySafari" name="ACTIVE_DEVICES" label="Active devices" group="Options" state="Idle" perm="rw" timeout="60" timestamp="2020-06-30T23:40:17">
+    <defText name="ACTIVE_TELESCOPE" label="Telescope">
+Telescope Simulator
+    </defText>
+</defTextVector>
+<setTextVector device="SkySafari" name="SKYSAFARI_SETTINGS" state="Ok" timeout="60" timestamp="2020-06-30T23:40:17">
+    <oneText name="INDISERVER_HOST">
+localhost
+    </oneText>
+    <oneText name="INDISERVER_PORT">
+7624
+    </oneText>
+    <oneText name="SKYSAFARI_PORT">
+9624
+    </oneText>
+</setTextVector>
+<setTextVector device="SkySafari" name="ACTIVE_DEVICES" state="Ok" timeout="60" timestamp="2020-06-30T23:40:17">
+    <oneText name="ACTIVE_TELESCOPE">
+Celestron GPS
+    </oneText>
+</setTextVector>
+<message device="ZWO CCD ASI185MC" timestamp="2020-06-30T23:40:17" message="[INFO] Camera is offline."/>
+<defSwitchVector device="MoonLite" name="CONNECTION" label="Connection" group="Main Control" state="Idle" perm="rw" rule="OneOfMany" timeout="60" timestamp="2020-06-30T23:40:17">
+    <defSwitch name="CONNECT" label="Connect">
+Off
+    </defSwitch>
+    <defSwitch name="DISCONNECT" label="Disconnect">
+On
+    </defSwitch>
+</defSwitchVector>
+<defTextVector device="MoonLite" name="DRIVER_INFO" label="Driver Info" group="Connection" state="Idle" perm="ro" timeout="60" timestamp="2020-06-30T23:40:17">
+    <defText name="DRIVER_NAME" label="Name">
+MoonLite
+    </defText>
+    <defText name="DRIVER_EXEC" label="Exec">
+indi_moonlite_focus
+    </defText>
+    <defText name="DRIVER_VERSION" label="Version">
+1.1
+    </defText>
+    <defText name="DRIVER_INTERFACE" label="Interface">
+8
+    </defText>
+</defTextVector>
+<defSwitchVector device="MoonLite" name="DEBUG" label="Debug" group="Options" state="Idle" perm="rw" rule="OneOfMany" timeout="0" timestamp="2020-06-30T23:40:17">
+    <defSwitch name="ENABLE" label="Enable">
+Off
+    </defSwitch>
+    <defSwitch name="DISABLE" label="Disable">
+On
+    </defSwitch>
+</defSwitchVector>
+<defNumberVector device="MoonLite" name="POLLING_PERIOD" label="Polling" group="Options" state="Idle" perm="rw" timeout="0" timestamp="2020-06-30T23:40:17">
+    <defNumber name="PERIOD_MS" label="Period (ms)" format="%.f" min="10" max="600000" step="1000">
+500
+    </defNumber>
+</defNumberVector>
+<defSwitchVector device="MoonLite" name="CONFIG_PROCESS" label="Configuration" group="Options" state="Idle" perm="rw" rule="AtMostOne" timeout="0" timestamp="2020-06-30T23:40:17">
+    <defSwitch name="CONFIG_LOAD" label="Load">
+Off
+    </defSwitch>
+    <defSwitch name="CONFIG_SAVE" label="Save">
+Off
+    </defSwitch>
+    <defSwitch name="CONFIG_DEFAULT" label="Default">
+Off
+    </defSwitch>
+    <defSwitch name="CONFIG_PURGE" label="Purge">
+Off
+    </defSwitch>
+</defSwitchVector>
+<setSwitchVector device="MoonLite" name="DEBUG" state="Ok" timeout="0" timestamp="2020-06-30T23:40:17">
+    <oneSwitch name="ENABLE">
+Off
+    </oneSwitch>
+    <oneSwitch name="DISABLE">
+On
+    </oneSwitch>
+</setSwitchVector>
+<setNumberVector device="MoonLite" name="POLLING_PERIOD" state="Ok" timeout="0" timestamp="2020-06-30T23:40:17">
+    <oneNumber name="PERIOD_MS">
+500
+    </oneNumber>
+</setNumberVector>
+<defSwitchVector device="MoonLite" name="CONNECTION_MODE" label="Connection Mode" group="Connection" state="Idle" perm="rw" rule="OneOfMany" timeout="60" timestamp="2020-06-30T23:40:17">
+    <defSwitch name="CONNECTION_SERIAL" label="Serial">
+On
+    </defSwitch>
+    <defSwitch name="CONNECTION_TCP" label="Ethernet">
+Off
+    </defSwitch>
+</defSwitchVector>
+<defTextVector device="MoonLite" name="DEVICE_PORT" label="Ports" group="Connection" state="Idle" perm="rw" timeout="60" timestamp="2020-06-30T23:40:17">
+    <defText name="PORT" label="Port">
+/dev/ttyUSB1
+    </defText>
+</defTextVector>
+<setTextVector device="MoonLite" name="DEVICE_PORT" state="Ok" timeout="60" timestamp="2020-06-30T23:40:17">
+    <oneText name="PORT">
+/dev/ttyUSB1
+    </oneText>
+</setTextVector>
+<defSwitchVector device="MoonLite" name="DEVICE_BAUD_RATE" label="Baud Rate" group="Connection" state="Idle" perm="rw" rule="OneOfMany" timeout="60" timestamp="2020-06-30T23:40:17">
+    <defSwitch name="9600" label="9600">
+On
+    </defSwitch>
+    <defSwitch name="19200" label="19200">
+Off
+    </defSwitch>
+    <defSwitch name="38400" label="38400">
+Off
+    </defSwitch>
+    <defSwitch name="57600" label="57600">
+Off
+    </defSwitch>
+    <defSwitch name="115200" label="115200">
+Off
+    </defSwitch>
+    <defSwitch name="230400" label="230400">
+Off
+    </defSwitch>
+</defSwitchVector>
+<setSwitchVector device="MoonLite" name="DEVICE_BAUD_RATE" state="Ok" timeout="60" timestamp="2020-06-30T23:40:17">
+    <oneSwitch name="9600">
+On
+    </oneSwitch>
+    <oneSwitch name="19200">
+Off
+    </oneSwitch>
+    <oneSwitch name="38400">
+Off
+    </oneSwitch>
+    <oneSwitch name="57600">
+Off
+    </oneSwitch>
+    <oneSwitch name="115200">
+Off
+    </oneSwitch>
+    <oneSwitch name="230400">
+Off
+    </oneSwitch>
+</setSwitchVector>
+<defSwitchVector device="MoonLite" name="DEVICE_AUTO_SEARCH" label="Auto Search" group="Connection" state="Idle" perm="rw" rule="OneOfMany" timeout="60" timestamp="2020-06-30T23:40:17">
+    <defSwitch name="INDI_ENABLED" label="Enabled">
+On
+    </defSwitch>
+    <defSwitch name="INDI_DISABLED" label="Disabled">
+Off
+    </defSwitch>
+</defSwitchVector>
+<setSwitchVector device="MoonLite" name="DEVICE_AUTO_SEARCH" state="Idle" timeout="60" timestamp="2020-06-30T23:40:17" message="Error: invalid state switch for property Auto Search (DEVICE_AUTO_SEARCH). No switch is on.">
+    <oneSwitch name="INDI_ENABLED">
+On
+    </oneSwitch>
+    <oneSwitch name="INDI_DISABLED">
+Off
+    </oneSwitch>
+</setSwitchVector>
+<setSwitchVector device="MoonLite" name="DEVICE_AUTO_SEARCH" state="Ok" timeout="60" timestamp="2020-06-30T23:40:17">
+    <oneSwitch name="INDI_ENABLED">
+On
+    </oneSwitch>
+    <oneSwitch name="INDI_DISABLED">
+Off
+    </oneSwitch>
+</setSwitchVector>
+<defSwitchVector device="MoonLite" name="DEVICE_PORT_SCAN" label="Refresh" group="Connection" state="Idle" perm="rw" rule="OneOfMany" timeout="60" timestamp="2020-06-30T23:40:17">
+    <defSwitch name="Scan Ports" label="Scan Ports">
+Off
+    </defSwitch>
+</defSwitchVector>
+<defSwitchVector device="MoonLite" name="SYSTEM_PORTS" label="System Ports" group="Connection" state="Idle" perm="rw" rule="AtMostOne" timeout="60" timestamp="2020-06-30T23:40:17">
+    <defSwitch name="/dev/ttyUSB0" label="/dev/ttyUSB0">
+Off
+    </defSwitch>
+    <defSwitch name="/dev/ttyUSB1" label="/dev/ttyUSB1">
+Off
+    </defSwitch>
+</defSwitchVector>
+<defTextVector device="MoonLite" name="DEVICE_PORT" label="Ports" group="Connection" state="Ok" perm="rw" timeout="60" timestamp="2020-06-30T23:40:17">
+    <defText name="PORT" label="Port">
+/dev/ttyUSB1
+    </defText>
+</defTextVector>
+<setTextVector device="MoonLite" name="DEVICE_PORT" state="Ok" timeout="60" timestamp="2020-06-30T23:40:17">
+    <oneText name="PORT">
+/dev/ttyUSB1
+    </oneText>
+</setTextVector>
+<defSwitchVector device="MoonLite" name="DEVICE_BAUD_RATE" label="Baud Rate" group="Connection" state="Ok" perm="rw" rule="OneOfMany" timeout="60" timestamp="2020-06-30T23:40:17">
+    <defSwitch name="9600" label="9600">
+On
+    </defSwitch>
+    <defSwitch name="19200" label="19200">
+Off
+    </defSwitch>
+    <defSwitch name="38400" label="38400">
+Off
+    </defSwitch>
+    <defSwitch name="57600" label="57600">
+Off
+    </defSwitch>
+    <defSwitch name="115200" label="115200">
+Off
+    </defSwitch>
+    <defSwitch name="230400" label="230400">
+Off
+    </defSwitch>
+</defSwitchVector>
+<setSwitchVector device="MoonLite" name="DEVICE_BAUD_RATE" state="Ok" timeout="60" timestamp="2020-06-30T23:40:17">
+    <oneSwitch name="9600">
+On
+    </oneSwitch>
+    <oneSwitch name="19200">
+Off
+    </oneSwitch>
+    <oneSwitch name="38400">
+Off
+    </oneSwitch>
+    <oneSwitch name="57600">
+Off
+    </oneSwitch>
+    <oneSwitch name="115200">
+Off
+    </oneSwitch>
+    <oneSwitch name="230400">
+Off
+    </oneSwitch>
+</setSwitchVector>
+<defSwitchVector device="MoonLite" name="DEVICE_AUTO_SEARCH" label="Auto Search" group="Connection" state="Ok" perm="rw" rule="OneOfMany" timeout="60" timestamp="2020-06-30T23:40:17">
+    <defSwitch name="INDI_ENABLED" label="Enabled">
+On
+    </defSwitch>
+    <defSwitch name="INDI_DISABLED" label="Disabled">
+Off
+    </defSwitch>
+</defSwitchVector>
+<setSwitchVector device="MoonLite" name="DEVICE_AUTO_SEARCH" state="Idle" timeout="60" timestamp="2020-06-30T23:40:17" message="Error: invalid state switch for property Auto Search (DEVICE_AUTO_SEARCH). No switch is on.">
+    <oneSwitch name="INDI_ENABLED">
+On
+    </oneSwitch>
+    <oneSwitch name="INDI_DISABLED">
+Off
+    </oneSwitch>
+</setSwitchVector>
+<setSwitchVector device="MoonLite" name="DEVICE_AUTO_SEARCH" state="Ok" timeout="60" timestamp="2020-06-30T23:40:17">
+    <oneSwitch name="INDI_ENABLED">
+On
+    </oneSwitch>
+    <oneSwitch name="INDI_DISABLED">
+Off
+    </oneSwitch>
+</setSwitchVector>
+<defSwitchVector device="MoonLite" name="DEVICE_PORT_SCAN" label="Refresh" group="Connection" state="Idle" perm="rw" rule="OneOfMany" timeout="60" timestamp="2020-06-30T23:40:17">
+    <defSwitch name="Scan Ports" label="Scan Ports">
+Off
+    </defSwitch>
+</defSwitchVector>
+<delProperty device="MoonLite" name="SYSTEM_PORTS" timestamp="2020-06-30T23:40:17"/>
+<defSwitchVector device="MoonLite" name="SYSTEM_PORTS" label="System Ports" group="Connection" state="Idle" perm="rw" rule="AtMostOne" timeout="60" timestamp="2020-06-30T23:40:17">
+    <defSwitch name="/dev/ttyUSB0" label="/dev/ttyUSB0">
+Off
+    </defSwitch>
+    <defSwitch name="/dev/ttyUSB1" label="/dev/ttyUSB1">
+Off
+    </defSwitch>
+</defSwitchVector>
+<setSwitchVector device="MoonLite" name="CONNECTION_MODE" state="Ok" timeout="60" timestamp="2020-06-30T23:40:17">
+    <oneSwitch name="CONNECTION_SERIAL">
+On
+    </oneSwitch>
+    <oneSwitch name="CONNECTION_TCP">
+Off
+    </oneSwitch>
+</setSwitchVector>
+<delProperty device="ZWO CCD ASI071MC Pro"/>
+<delProperty device="ZWO CCD ASI185MC"/>
+<defSwitchVector device="ZWO CCD ASI071MC Pro" name="CONNECTION" label="Connection" group="Main Control" state="Idle" perm="rw" rule="OneOfMany" timeout="60" timestamp="2020-06-30T23:40:18">
+    <defSwitch name="CONNECT" label="Connect">
+Off
+    </defSwitch>
+    <defSwitch name="DISCONNECT" label="Disconnect">
+On
+    </defSwitch>
+</defSwitchVector>
+<defTextVector device="ZWO CCD ASI071MC Pro" name="DRIVER_INFO" label="Driver Info" group="General Info" state="Idle" perm="ro" timeout="60" timestamp="2020-06-30T23:40:18">
+    <defText name="DRIVER_NAME" label="Name">
+ZWO CCD
+    </defText>
+    <defText name="DRIVER_EXEC" label="Exec">
+indi_asi_ccd
+    </defText>
+    <defText name="DRIVER_VERSION" label="Version">
+1.6
+    </defText>
+    <defText name="DRIVER_INTERFACE" label="Interface">
+2
+    </defText>
+</defTextVector>
+<defNumberVector device="ZWO CCD ASI071MC Pro" name="POLLING_PERIOD" label="Polling" group="Options" state="Idle" perm="rw" timeout="0" timestamp="2020-06-30T23:40:18">
+    <defNumber name="PERIOD_MS" label="Period (ms)" format="%.f" min="10" max="600000" step="1000">
+1000
+    </defNumber>
+</defNumberVector>
+<defSwitchVector device="ZWO CCD ASI071MC Pro" name="DEBUG" label="Debug" group="Options" state="Idle" perm="rw" rule="OneOfMany" timeout="0" timestamp="2020-06-30T23:40:18">
+    <defSwitch name="ENABLE" label="Enable">
+Off
+    </defSwitch>
+    <defSwitch name="DISABLE" label="Disable">
+On
+    </defSwitch>
+</defSwitchVector>
+<defSwitchVector device="ZWO CCD ASI071MC Pro" name="SIMULATION" label="Simulation" group="Options" state="Idle" perm="rw" rule="OneOfMany" timeout="0" timestamp="2020-06-30T23:40:18">
+    <defSwitch name="ENABLE" label="Enable">
+Off
+    </defSwitch>
+    <defSwitch name="DISABLE" label="Disable">
+On
+    </defSwitch>
+</defSwitchVector>
+<defSwitchVector device="ZWO CCD ASI071MC Pro" name="CONFIG_PROCESS" label="Configuration" group="Options" state="Idle" perm="rw" rule="AtMostOne" timeout="0" timestamp="2020-06-30T23:40:18">
+    <defSwitch name="CONFIG_LOAD" label="Load">
+Off
+    </defSwitch>
+    <defSwitch name="CONFIG_SAVE" label="Save">
+Off
+    </defSwitch>
+    <defSwitch name="CONFIG_DEFAULT" label="Default">
+Off
+    </defSwitch>
+    <defSwitch name="CONFIG_PURGE" label="Purge">
+Off
+    </defSwitch>
+</defSwitchVector>
+<message device="ZWO CCD ASI071MC Pro" timestamp="2020-06-30T23:40:18" message="[INFO] Debug is enabled."/>
+<defSwitchVector device="ZWO CCD ASI071MC Pro" name="DEBUG_LEVEL" label="Debug Levels" group="Options" state="Idle" perm="rw" rule="AnyOfMany" timeout="0" timestamp="2020-06-30T23:40:18">
+    <defSwitch name="DBG_ERROR" label="Errors">
+On
+    </defSwitch>
+    <defSwitch name="DBG_WARNING" label="Warnings">
+On
+    </defSwitch>
+    <defSwitch name="DBG_SESSION" label="Messages">
+On
+    </defSwitch>
+    <defSwitch name="DBG_DEBUG" label="Driver Debug">
+Off
+    </defSwitch>
+</defSwitchVector>
+<defSwitchVector device="ZWO CCD ASI071MC Pro" name="LOGGING_LEVEL" label="Logging Levels" group="Options" state="Idle" perm="rw" rule="AnyOfMany" timeout="0" timestamp="2020-06-30T23:40:18">
+    <defSwitch name="LOG_ERROR" label="Errors">
+On
+    </defSwitch>
+    <defSwitch name="LOG_WARNING" label="Warnings">
+On
+    </defSwitch>
+    <defSwitch name="LOG_SESSION" label="Messages">
+On
+    </defSwitch>
+    <defSwitch name="LOG_DEBUG" label="Driver Debug">
+Off
+    </defSwitch>
+</defSwitchVector>
+<defSwitchVector device="ZWO CCD ASI071MC Pro" name="LOG_OUTPUT" label="Log Output" group="Options" state="Idle" perm="rw" rule="AnyOfMany" timeout="0" timestamp="2020-06-30T23:40:18">
+    <defSwitch name="CLIENT_DEBUG" label="To Client">
+On
+    </defSwitch>
+    <defSwitch name="FILE_DEBUG" label="To Log File">
+Off
+    </defSwitch>
+</defSwitchVector>
+<setSwitchVector device="ZWO CCD ASI071MC Pro" name="DEBUG" state="Ok" timeout="0" timestamp="2020-06-30T23:40:18">
+    <oneSwitch name="ENABLE">
+On
+    </oneSwitch>
+    <oneSwitch name="DISABLE">
+Off
+    </oneSwitch>
+</setSwitchVector>
+<setNumberVector device="ZWO CCD ASI071MC Pro" name="POLLING_PERIOD" state="Ok" timeout="0" timestamp="2020-06-30T23:40:18">
+    <oneNumber name="PERIOD_MS">
+1000
+    </oneNumber>
+</setNumberVector>
+<defTextVector device="ZWO CCD ASI071MC Pro" name="ACTIVE_DEVICES" label="Snoop devices" group="Options" state="Idle" perm="rw" timeout="60" timestamp="2020-06-30T23:40:18">
+    <defText name="ACTIVE_TELESCOPE" label="Telescope">
+Telescope Simulator
+    </defText>
+    <defText name="ACTIVE_ROTATOR" label="Rotator">
+Rotator Simulator
+    </defText>
+    <defText name="ACTIVE_FOCUSER" label="Focuser">
+Focuser Simulator
+    </defText>
+    <defText name="ACTIVE_FILTER" label="Filter">
+CCD Simulator
+    </defText>
+    <defText name="ACTIVE_SKYQUALITY" label="Sky Quality">
+SQM
+    </defText>
+</defTextVector>
+<setTextVector device="ZWO CCD ASI071MC Pro" name="ACTIVE_DEVICES" state="Ok" timeout="60" timestamp="2020-06-30T23:40:18">
+    <oneText name="ACTIVE_TELESCOPE">
+Celestron GPS
+    </oneText>
+    <oneText name="ACTIVE_ROTATOR">
+Rotator Simulator
+    </oneText>
+    <oneText name="ACTIVE_FOCUSER">
+MoonLite
+    </oneText>
+    <oneText name="ACTIVE_FILTER">
+CCD Simulator
+    </oneText>
+    <oneText name="ACTIVE_SKYQUALITY">
+SQM
+    </oneText>
+</setTextVector>
+<defSwitchVector device="ZWO CCD ASI185MC" name="CONNECTION" label="Connection" group="Main Control" state="Idle" perm="rw" rule="OneOfMany" timeout="60" timestamp="2020-06-30T23:40:18">
+    <defSwitch name="CONNECT" label="Connect">
+Off
+    </defSwitch>
+    <defSwitch name="DISCONNECT" label="Disconnect">
+On
+    </defSwitch>
+</defSwitchVector>
+<defTextVector device="ZWO CCD ASI185MC" name="DRIVER_INFO" label="Driver Info" group="General Info" state="Idle" perm="ro" timeout="60" timestamp="2020-06-30T23:40:18">
+    <defText name="DRIVER_NAME" label="Name">
+ZWO CCD
+    </defText>
+    <defText name="DRIVER_EXEC" label="Exec">
+indi_asi_ccd
+    </defText>
+    <defText name="DRIVER_VERSION" label="Version">
+1.6
+    </defText>
+    <defText name="DRIVER_INTERFACE" label="Interface">
+6
+    </defText>
+</defTextVector>
+<defNumberVector device="ZWO CCD ASI185MC" name="POLLING_PERIOD" label="Polling" group="Options" state="Idle" perm="rw" timeout="0" timestamp="2020-06-30T23:40:18">
+    <defNumber name="PERIOD_MS" label="Period (ms)" format="%.f" min="10" max="600000" step="1000">
+1000
+    </defNumber>
+</defNumberVector>
+<defSwitchVector device="ZWO CCD ASI185MC" name="DEBUG" label="Debug" group="Options" state="Idle" perm="rw" rule="OneOfMany" timeout="0" timestamp="2020-06-30T23:40:18">
+    <defSwitch name="ENABLE" label="Enable">
+Off
+    </defSwitch>
+    <defSwitch name="DISABLE" label="Disable">
+On
+    </defSwitch>
+</defSwitchVector>
+<defSwitchVector device="ZWO CCD ASI185MC" name="SIMULATION" label="Simulation" group="Options" state="Idle" perm="rw" rule="OneOfMany" timeout="0" timestamp="2020-06-30T23:40:18">
+    <defSwitch name="ENABLE" label="Enable">
+Off
+    </defSwitch>
+    <defSwitch name="DISABLE" label="Disable">
+On
+    </defSwitch>
+</defSwitchVector>
+<defSwitchVector device="ZWO CCD ASI185MC" name="CONFIG_PROCESS" label="Configuration" group="Options" state="Idle" perm="rw" rule="AtMostOne" timeout="0" timestamp="2020-06-30T23:40:18">
+    <defSwitch name="CONFIG_LOAD" label="Load">
+Off
+    </defSwitch>
+    <defSwitch name="CONFIG_SAVE" label="Save">
+Off
+    </defSwitch>
+    <defSwitch name="CONFIG_DEFAULT" label="Default">
+Off
+    </defSwitch>
+    <defSwitch name="CONFIG_PURGE" label="Purge">
+Off
+    </defSwitch>
+</defSwitchVector>
+<message device="ZWO CCD ASI185MC" timestamp="2020-06-30T23:40:18" message="[INFO] Debug is enabled."/>
+<defSwitchVector device="ZWO CCD ASI185MC" name="DEBUG_LEVEL" label="Debug Levels" group="Options" state="Idle" perm="rw" rule="AnyOfMany" timeout="0" timestamp="2020-06-30T23:40:18">
+    <defSwitch name="DBG_ERROR" label="Errors">
+On
+    </defSwitch>
+    <defSwitch name="DBG_WARNING" label="Warnings">
+On
+    </defSwitch>
+    <defSwitch name="DBG_SESSION" label="Messages">
+On
+    </defSwitch>
+    <defSwitch name="DBG_DEBUG" label="Driver Debug">
+Off
+    </defSwitch>
+</defSwitchVector>
+<defSwitchVector device="ZWO CCD ASI185MC" name="LOGGING_LEVEL" label="Logging Levels" group="Options" state="Idle" perm="rw" rule="AnyOfMany" timeout="0" timestamp="2020-06-30T23:40:18">
+    <defSwitch name="LOG_ERROR" label="Errors">
+On
+    </defSwitch>
+    <defSwitch name="LOG_WARNING" label="Warnings">
+On
+    </defSwitch>
+    <defSwitch name="LOG_SESSION" label="Messages">
+On
+    </defSwitch>
+    <defSwitch name="LOG_DEBUG" label="Driver Debug">
+Off
+    </defSwitch>
+</defSwitchVector>
+<defSwitchVector device="ZWO CCD ASI185MC" name="LOG_OUTPUT" label="Log Output" group="Options" state="Idle" perm="rw" rule="AnyOfMany" timeout="0" timestamp="2020-06-30T23:40:18">
+    <defSwitch name="CLIENT_DEBUG" label="To Client">
+On
+    </defSwitch>
+    <defSwitch name="FILE_DEBUG" label="To Log File">
+Off
+    </defSwitch>
+</defSwitchVector>
+<setSwitchVector device="ZWO CCD ASI185MC" name="DEBUG" state="Ok" timeout="0" timestamp="2020-06-30T23:40:18">
+    <oneSwitch name="ENABLE">
+On
+    </oneSwitch>
+    <oneSwitch name="DISABLE">
+Off
+    </oneSwitch>
+</setSwitchVector>
+<message device="ZWO CCD ASI185MC" timestamp="2020-06-30T23:40:18" message="[DEBUG] Toggle Debug Level -- Driver Debug"/>
+<setSwitchVector device="ZWO CCD ASI185MC" name="DEBUG_LEVEL" state="Ok" timeout="0" timestamp="2020-06-30T23:40:18">
+    <oneSwitch name="DBG_ERROR">
+On
+    </oneSwitch>
+    <oneSwitch name="DBG_WARNING">
+On
+    </oneSwitch>
+    <oneSwitch name="DBG_SESSION">
+On
+    </oneSwitch>
+    <oneSwitch name="DBG_DEBUG">
+On
+    </oneSwitch>
+</setSwitchVector>
+<message device="ZWO CCD ASI185MC" timestamp="2020-06-30T23:40:18" message="[DEBUG] Toggle Logging Level -- Messages"/>
+<setSwitchVector device="ZWO CCD ASI185MC" name="LOGGING_LEVEL" state="Ok" timeout="0" timestamp="2020-06-30T23:40:18">
+    <oneSwitch name="LOG_ERROR">
+On
+    </oneSwitch>
+    <oneSwitch name="LOG_WARNING">
+On
+    </oneSwitch>
+    <oneSwitch name="LOG_SESSION">
+On
+    </oneSwitch>
+    <oneSwitch name="LOG_DEBUG">
+Off
+    </oneSwitch>
+</setSwitchVector>
+<setNumberVector device="ZWO CCD ASI185MC" name="POLLING_PERIOD" state="Ok" timeout="0" timestamp="2020-06-30T23:40:18">
+    <oneNumber name="PERIOD_MS">
+1000
+    </oneNumber>
+</setNumberVector>
+<setSwitchVector device="ZWO CCD ASI185MC" name="LOG_OUTPUT" state="Ok" timeout="0" timestamp="2020-06-30T23:40:18">
+    <oneSwitch name="CLIENT_DEBUG">
+On
+    </oneSwitch>
+    <oneSwitch name="FILE_DEBUG">
+Off
+    </oneSwitch>
+</setSwitchVector>
+<defTextVector device="ZWO CCD ASI185MC" name="ACTIVE_DEVICES" label="Snoop devices" group="Options" state="Idle" perm="rw" timeout="60" timestamp="2020-06-30T23:40:18">
+    <defText name="ACTIVE_TELESCOPE" label="Telescope">
+Telescope Simulator
+    </defText>
+    <defText name="ACTIVE_ROTATOR" label="Rotator">
+Rotator Simulator
+    </defText>
+    <defText name="ACTIVE_FOCUSER" label="Focuser">
+Focuser Simulator
+    </defText>
+    <defText name="ACTIVE_FILTER" label="Filter">
+CCD Simulator
+    </defText>
+    <defText name="ACTIVE_SKYQUALITY" label="Sky Quality">
+SQM
+    </defText>
+</defTextVector>
+<setTextVector device="ZWO CCD ASI185MC" name="ACTIVE_DEVICES" state="Ok" timeout="60" timestamp="2020-06-30T23:40:18">
+    <oneText name="ACTIVE_TELESCOPE">
+Celestron GPS
+    </oneText>
+    <oneText name="ACTIVE_ROTATOR">
+Rotator Simulator
+    </oneText>
+    <oneText name="ACTIVE_FOCUSER">
+Focuser Simulator
+    </oneText>
+    <oneText name="ACTIVE_FILTER">
+CCD Simulator
+    </oneText>
+    <oneText name="ACTIVE_SKYQUALITY">
+SQM
+    </oneText>
+</setTextVector>
+<message device="Celestron GPS" timestamp="2020-06-30T23:40:20" message="[ERROR] Serial read error: Timeout error"/>
+<message device="Celestron GPS" timestamp="2020-06-30T23:40:20" message="[ERROR] Failed to read RA/DEC values."/>
+<setNumberVector device="Celestron GPS" name="EQUATORIAL_EOD_COORD" state="Alert" timeout="60" timestamp="2020-06-30T23:40:20">
+    <oneNumber name="RA">
+10.480057239532470703
+    </oneNumber>
+    <oneNumber name="DEC">
+5.2850890159606933594
+    </oneNumber>
+</setNumberVector>
+<delProperty device="Celestron GPS"/>
+<defSwitchVector device="Celestron GPS" name="CONNECTION" label="Connection" group="Main Control" state="Idle" perm="rw" rule="OneOfMany" timeout="60" timestamp="2020-06-30T23:40:20">
+    <defSwitch name="CONNECT" label="Connect">
+Off
+    </defSwitch>
+    <defSwitch name="DISCONNECT" label="Disconnect">
+On
+    </defSwitch>
+</defSwitchVector>
+<defTextVector device="Celestron GPS" name="DRIVER_INFO" label="Driver Info" group="Connection" state="Idle" perm="ro" timeout="60" timestamp="2020-06-30T23:40:20">
+    <defText name="DRIVER_NAME" label="Name">
+Celestron GPS
+    </defText>
+    <defText name="DRIVER_EXEC" label="Exec">
+indi_celestron_gps
+    </defText>
+    <defText name="DRIVER_VERSION" label="Version">
+3.4
+    </defText>
+    <defText name="DRIVER_INTERFACE" label="Interface">
+5
+    </defText>
+</defTextVector>
+<defNumberVector device="Celestron GPS" name="POLLING_PERIOD" label="Polling" group="Options" state="Idle" perm="rw" timeout="0" timestamp="2020-06-30T23:40:20">
+    <defNumber name="PERIOD_MS" label="Period (ms)" format="%.f" min="10" max="600000" step="1000">
+1000
+    </defNumber>
+</defNumberVector>
+<defSwitchVector device="Celestron GPS" name="DEBUG" label="Debug" group="Options" state="Idle" perm="rw" rule="OneOfMany" timeout="0" timestamp="2020-06-30T23:40:20">
+    <defSwitch name="ENABLE" label="Enable">
+Off
+    </defSwitch>
+    <defSwitch name="DISABLE" label="Disable">
+On
+    </defSwitch>
+</defSwitchVector>
+<defSwitchVector device="Celestron GPS" name="SIMULATION" label="Simulation" group="Options" state="Idle" perm="rw" rule="OneOfMany" timeout="0" timestamp="2020-06-30T23:40:20">
+    <defSwitch name="ENABLE" label="Enable">
+Off
+    </defSwitch>
+    <defSwitch name="DISABLE" label="Disable">
+On
+    </defSwitch>
+</defSwitchVector>
+<defSwitchVector device="Celestron GPS" name="CONFIG_PROCESS" label="Configuration" group="Options" state="Idle" perm="rw" rule="AtMostOne" timeout="0" timestamp="2020-06-30T23:40:20">
+    <defSwitch name="CONFIG_LOAD" label="Load">
+Off
+    </defSwitch>
+    <defSwitch name="CONFIG_SAVE" label="Save">
+Off
+    </defSwitch>
+    <defSwitch name="CONFIG_DEFAULT" label="Default">
+Off
+    </defSwitch>
+    <defSwitch name="CONFIG_PURGE" label="Purge">
+Off
+    </defSwitch>
+</defSwitchVector>
+<setSwitchVector device="Celestron GPS" name="DEBUG" state="Ok" timeout="0" timestamp="2020-06-30T23:40:20">
+    <oneSwitch name="ENABLE">
+Off
+    </oneSwitch>
+    <oneSwitch name="DISABLE">
+On
+    </oneSwitch>
+</setSwitchVector>
+<setNumberVector device="Celestron GPS" name="POLLING_PERIOD" state="Ok" timeout="0" timestamp="2020-06-30T23:40:20">
+    <oneNumber name="PERIOD_MS">
+1000
+    </oneNumber>
+</setNumberVector>
+<defSwitchVector device="Celestron GPS" name="CONNECTION_MODE" label="Connection Mode" group="Connection" state="Idle" perm="rw" rule="OneOfMany" timeout="60" timestamp="2020-06-30T23:40:20">
+    <defSwitch name="CONNECTION_SERIAL" label="Serial">
+On
+    </defSwitch>
+    <defSwitch name="CONNECTION_TCP" label="Ethernet">
+Off
+    </defSwitch>
+</defSwitchVector>
+<defTextVector device="Celestron GPS" name="DEVICE_PORT" label="Ports" group="Connection" state="Idle" perm="rw" timeout="60" timestamp="2020-06-30T23:40:20">
+    <defText name="PORT" label="Port">
+/dev/cgem
+    </defText>
+</defTextVector>
+<setTextVector device="Celestron GPS" name="DEVICE_PORT" state="Ok" timeout="60" timestamp="2020-06-30T23:40:20">
+    <oneText name="PORT">
+/dev/cgem
+    </oneText>
+</setTextVector>
+<defSwitchVector device="Celestron GPS" name="DEVICE_BAUD_RATE" label="Baud Rate" group="Connection" state="Idle" perm="rw" rule="OneOfMany" timeout="60" timestamp="2020-06-30T23:40:20">
+    <defSwitch name="9600" label="9600">
+On
+    </defSwitch>
+    <defSwitch name="19200" label="19200">
+Off
+    </defSwitch>
+    <defSwitch name="38400" label="38400">
+Off
+    </defSwitch>
+    <defSwitch name="57600" label="57600">
+Off
+    </defSwitch>
+    <defSwitch name="115200" label="115200">
+Off
+    </defSwitch>
+    <defSwitch name="230400" label="230400">
+Off
+    </defSwitch>
+</defSwitchVector>
+<setSwitchVector device="Celestron GPS" name="DEVICE_BAUD_RATE" state="Ok" timeout="60" timestamp="2020-06-30T23:40:20">
+    <oneSwitch name="9600">
+On
+    </oneSwitch>
+    <oneSwitch name="19200">
+Off
+    </oneSwitch>
+    <oneSwitch name="38400">
+Off
+    </oneSwitch>
+    <oneSwitch name="57600">
+Off
+    </oneSwitch>
+    <oneSwitch name="115200">
+Off
+    </oneSwitch>
+    <oneSwitch name="230400">
+Off
+    </oneSwitch>
+</setSwitchVector>
+<defSwitchVector device="Celestron GPS" name="DEVICE_AUTO_SEARCH" label="Auto Search" group="Connection" state="Idle" perm="rw" rule="OneOfMany" timeout="60" timestamp="2020-06-30T23:40:20">
+    <defSwitch name="INDI_ENABLED" label="Enabled">
+On
+    </defSwitch>
+    <defSwitch name="INDI_DISABLED" label="Disabled">
+Off
+    </defSwitch>
+</defSwitchVector>
+<message device="Celestron GPS" timestamp="2020-06-30T23:40:20" message="[INFO] Auto search is disabled."/>
+<setSwitchVector device="Celestron GPS" name="DEVICE_AUTO_SEARCH" state="Ok" timeout="60" timestamp="2020-06-30T23:40:20">
+    <oneSwitch name="INDI_ENABLED">
+Off
+    </oneSwitch>
+    <oneSwitch name="INDI_DISABLED">
+On
+    </oneSwitch>
+</setSwitchVector>
+<defSwitchVector device="Celestron GPS" name="DEVICE_PORT_SCAN" label="Refresh" group="Connection" state="Idle" perm="rw" rule="OneOfMany" timeout="60" timestamp="2020-06-30T23:40:20">
+    <defSwitch name="Scan Ports" label="Scan Ports">
+Off
+    </defSwitch>
+</defSwitchVector>
+<defSwitchVector device="Celestron GPS" name="SYSTEM_PORTS" label="System Ports" group="Connection" state="Idle" perm="rw" rule="AtMostOne" timeout="60" timestamp="2020-06-30T23:40:20">
+    <defSwitch name="/dev/ttyUSB0" label="/dev/ttyUSB0">
+Off
+    </defSwitch>
+    <defSwitch name="/dev/ttyUSB1" label="/dev/ttyUSB1">
+Off
+    </defSwitch>
+</defSwitchVector>
+<defTextVector device="Celestron GPS" name="DEVICE_PORT" label="Ports" group="Connection" state="Ok" perm="rw" timeout="60" timestamp="2020-06-30T23:40:20">
+    <defText name="PORT" label="Port">
+/dev/cgem
+    </defText>
+</defTextVector>
+<setTextVector device="Celestron GPS" name="DEVICE_PORT" state="Ok" timeout="60" timestamp="2020-06-30T23:40:20">
+    <oneText name="PORT">
+/dev/cgem
+    </oneText>
+</setTextVector>
+<setSwitchVector device="Celestron GPS" name="DEVICE_AUTO_SEARCH" state="Ok" timeout="60" timestamp="2020-06-30T23:40:20">
+    <oneSwitch name="INDI_ENABLED">
+Off
+    </oneSwitch>
+    <oneSwitch name="INDI_DISABLED">
+On
+    </oneSwitch>
+</setSwitchVector>
+<defSwitchVector device="Celestron GPS" name="DEVICE_BAUD_RATE" label="Baud Rate" group="Connection" state="Ok" perm="rw" rule="OneOfMany" timeout="60" timestamp="2020-06-30T23:40:20">
+    <defSwitch name="9600" label="9600">
+On
+    </defSwitch>
+    <defSwitch name="19200" label="19200">
+Off
+    </defSwitch>
+    <defSwitch name="38400" label="38400">
+Off
+    </defSwitch>
+    <defSwitch name="57600" label="57600">
+Off
+    </defSwitch>
+    <defSwitch name="115200" label="115200">
+Off
+    </defSwitch>
+    <defSwitch name="230400" label="230400">
+Off
+    </defSwitch>
+</defSwitchVector>
+<setSwitchVector device="Celestron GPS" name="DEVICE_BAUD_RATE" state="Ok" timeout="60" timestamp="2020-06-30T23:40:20">
+    <oneSwitch name="9600">
+On
+    </oneSwitch>
+    <oneSwitch name="19200">
+Off
+    </oneSwitch>
+    <oneSwitch name="38400">
+Off
+    </oneSwitch>
+    <oneSwitch name="57600">
+Off
+    </oneSwitch>
+    <oneSwitch name="115200">
+Off
+    </oneSwitch>
+    <oneSwitch name="230400">
+Off
+    </oneSwitch>
+</setSwitchVector>
+<defSwitchVector device="Celestron GPS" name="DEVICE_AUTO_SEARCH" label="Auto Search" group="Connection" state="Ok" perm="rw" rule="OneOfMany" timeout="60" timestamp="2020-06-30T23:40:20">
+    <defSwitch name="INDI_ENABLED" label="Enabled">
+Off
+    </defSwitch>
+    <defSwitch name="INDI_DISABLED" label="Disabled">
+On
+    </defSwitch>
+</defSwitchVector>
+<setSwitchVector device="Celestron GPS" name="DEVICE_AUTO_SEARCH" state="Ok" timeout="60" timestamp="2020-06-30T23:40:20">
+    <oneSwitch name="INDI_ENABLED">
+Off
+    </oneSwitch>
+    <oneSwitch name="INDI_DISABLED">
+On
+    </oneSwitch>
+</setSwitchVector>
+<defSwitchVector device="Celestron GPS" name="DEVICE_PORT_SCAN" label="Refresh" group="Connection" state="Idle" perm="rw" rule="OneOfMany" timeout="60" timestamp="2020-06-30T23:40:20">
+    <defSwitch name="Scan Ports" label="Scan Ports">
+Off
+    </defSwitch>
+</defSwitchVector>
+<delProperty device="Celestron GPS" name="SYSTEM_PORTS" timestamp="2020-06-30T23:40:20"/>
+<defSwitchVector device="Celestron GPS" name="SYSTEM_PORTS" label="System Ports" group="Connection" state="Idle" perm="rw" rule="AtMostOne" timeout="60" timestamp="2020-06-30T23:40:20">
+    <defSwitch name="/dev/ttyUSB0" label="/dev/ttyUSB0">
+Off
+    </defSwitch>
+    <defSwitch name="/dev/ttyUSB1" label="/dev/ttyUSB1">
+Off
+    </defSwitch>
+</defSwitchVector>
+<setSwitchVector device="Celestron GPS" name="CONNECTION_MODE" state="Ok" timeout="60" timestamp="2020-06-30T23:40:20">
+    <oneSwitch name="CONNECTION_SERIAL">
+On
+    </oneSwitch>
+    <oneSwitch name="CONNECTION_TCP">
+Off
+    </oneSwitch>
+</setSwitchVector>
+<defTextVector device="Celestron GPS" name="ACTIVE_DEVICES" label="Snoop devices" group="Options" state="Idle" perm="rw" timeout="60" timestamp="2020-06-30T23:40:20">
+    <defText name="ACTIVE_GPS" label="GPS">
+GPS Simulator
+    </defText>
+    <defText name="ACTIVE_DOME" label="DOME">
+Dome Simulator
+    </defText>
+</defTextVector>
+<setTextVector device="Celestron GPS" name="ACTIVE_DEVICES" state="Ok" timeout="60" timestamp="2020-06-30T23:40:20">
+    <oneText name="ACTIVE_GPS">
+GPS Simulator
+    </oneText>
+    <oneText name="ACTIVE_DOME">
+Dome Simulator
+    </oneText>
+</setTextVector>
+<defSwitchVector device="Celestron GPS" name="DOME_POLICY" label="Dome parking policy" group="Options" state="Idle" perm="rw" rule="OneOfMany" timeout="60" timestamp="2020-06-30T23:40:20">
+    <defSwitch name="NO_ACTION" label="Ignore dome">
+On
+    </defSwitch>
+    <defSwitch name="LOCK_PARKING" label="Dome locks">
+Off
+    </defSwitch>
+    <defSwitch name="FORCE_CLOSE" label="Dome parks">
+Off
+    </defSwitch>
+    <defSwitch name="LOCK_AND_FORCE" label="Both">
+Off
+    </defSwitch>
+</defSwitchVector>
+<setSwitchVector device="Celestron GPS" name="DOME_POLICY" state="Ok" timeout="60" timestamp="2020-06-30T23:40:20">
+    <oneSwitch name="NO_ACTION">
+On
+    </oneSwitch>
+    <oneSwitch name="LOCK_PARKING">
+Off
+    </oneSwitch>
+    <oneSwitch name="FORCE_CLOSE">
+Off
+    </oneSwitch>
+    <oneSwitch name="LOCK_AND_FORCE">
+Off
+    </oneSwitch>
+</setSwitchVector>
+<defNumberVector device="Celestron GPS" name="TELESCOPE_INFO" label="Scope Properties" group="Options" state="Ok" perm="rw" timeout="60" timestamp="2020-06-30T23:40:20">
+    <defNumber name="TELESCOPE_APERTURE" label="Aperture (mm)" format="%g" min="10" max="5000" step="0">
+0
+    </defNumber>
+    <defNumber name="TELESCOPE_FOCAL_LENGTH" label="Focal Length (mm)" format="%g" min="10" max="10000" step="0">
+0
+    </defNumber>
+    <defNumber name="GUIDER_APERTURE" label="Guider Aperture (mm)" format="%g" min="10" max="5000" step="0">
+0
+    </defNumber>
+    <defNumber name="GUIDER_FOCAL_LENGTH" label="Guider Focal Length (mm)" format="%g" min="10" max="10000" step="0">
+0
+    </defNumber>
+</defNumberVector>
+<defTextVector device="Celestron GPS" name="SCOPE_CONFIG_NAME" label="Scope Name" group="Options" state="Ok" perm="rw" timeout="60" timestamp="2020-06-30T23:40:20">
+    <defText name="SCOPE_CONFIG_NAME" label="Config Name"/>
+</defTextVector>
+<setNumberVector device="Celestron GPS" name="TELESCOPE_INFO" state="Ok" timeout="60" timestamp="2020-06-30T23:40:20">
+    <oneNumber name="TELESCOPE_APERTURE">
+235
+    </oneNumber>
+    <oneNumber name="TELESCOPE_FOCAL_LENGTH">
+2350
+    </oneNumber>
+    <oneNumber name="GUIDER_APERTURE">
+60
+    </oneNumber>
+    <oneNumber name="GUIDER_FOCAL_LENGTH">
+240
+    </oneNumber>
+</setNumberVector>
+<setTextVector device="Celestron GPS" name="SCOPE_CONFIG_NAME" state="Ok" timeout="60" timestamp="2020-06-30T23:40:20">
+    <oneText name="SCOPE_CONFIG_NAME"/>
+</setTextVector>
+<defSwitchVector device="Celestron GPS" name="Hibernate" label="Hibernate" group="Options" state="Idle" perm="rw" rule="OneOfMany" timeout="0" timestamp="2020-06-30T23:40:20">
+    <defSwitch name="Enable" label="Enable">
+Off
+    </defSwitch>
+    <defSwitch name="Disable" label="Disable">
+On
+    </defSwitch>
+</defSwitchVector>
+<defSwitchVector device="Celestron GPS" name="CELESTRON_TRACK_MODE" label="Track Mode" group="Mount Info" state="Idle" perm="ro" rule="OneOfMany" timeout="0" timestamp="2020-06-30T23:40:20">
+    <defSwitch name="MODE_ALTAZ" label="Alt Az">
+Off
+    </defSwitch>
+    <defSwitch name="MODE_EQ_N" label="EQ N">
+On
+    </defSwitch>
+    <defSwitch name="MODE_EQ_S" label="EQ S">
+Off
+    </defSwitch>
+    <defSwitch name="MODE_RA_DEC" label="Ra and Dec">
+Off
+    </defSwitch>
+</defSwitchVector>
+<setSwitchVector device="Celestron GPS" name="Hibernate" state="Idle" timeout="0" timestamp="2020-06-30T23:40:20">
+    <oneSwitch name="Enable">
+Off
+    </oneSwitch>
+    <oneSwitch name="Disable">
+On
+    </oneSwitch>
+</setSwitchVector>

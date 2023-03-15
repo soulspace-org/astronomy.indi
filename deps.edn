@@ -1,0 +1,8 @@
+{:deps {org.clojure/clojure {:mvn/version "1.10.1"}
+        org.clojure/core.async {:mvn/version "1.5.640"}
+        org.clojure/spec.alpha {:mvn/version "0.3.214"}
+        org.clojure/data.xml {:mvn/version "0.0.8"}
+        org.soulspace.clj/clj.base {:mvn/version "0.9.0-SNAPSHOT"}
+        org.soulspace.clj/xml.dsl {:mvn/version "0.5.1"}
+        ;proto-repl {:mvn/version "0.3.1"}
+        }}
