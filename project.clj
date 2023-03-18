@@ -8,4 +8,8 @@
   :lein-tools-deps/config {:config-files [:install :user :project]}
 
   :profiles {:dev {:dependencies [[org.clojure/test.check "1.1.0"]]}}
-  :repl-options {:init-ns indi4clj.protocol})
+  :repl-options {:init-ns org.soulspace.astronomy.indi.protocol})
+
+  :test-paths ["test"]
+  :scm {:name "git" :url "https://github.com/soulspace-org/astronomy.indi"}
+  :deploy-repositories [["clojars"  {:sign-releases false :url "https://clojars.org/repo"}]])

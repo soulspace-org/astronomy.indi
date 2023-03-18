@@ -1,4 +1,4 @@
-{:deps {org.clojure/clojure {:mvn/version "1.10.1"}
+{:deps {org.clojure/clojure {:mvn/version "1.11.1"}
         org.clojure/core.async {:mvn/version "1.5.640"}
         org.clojure/spec.alpha {:mvn/version "0.3.214"}
         org.clojure/data.xml {:mvn/version "0.0.8"}
