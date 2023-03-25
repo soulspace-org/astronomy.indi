@@ -1,10 +1,45 @@
+;;;;
+;;;;   Copyright (c) Ludger Solbach. All rights reserved.
+;;;;
+;;;;   The use and distribution terms for this software are covered by the
+;;;;   Eclipse Public License 1.0 (http://opensource.org/licenses/eclipse-1.0.php)
+;;;;   which can be found in the file license.txt at the root of this distribution.
+;;;;   By using this software in any fashion, you are agreeing to be bound by
+;;;;   the terms of this license.
+;;;;
+;;;;   You must not remove this notice, or any other, from this software.
+;;;;
+
 (ns org.soulspace.astronomy.indi.protocol
   (:require [clojure.string :as str]
+            [clojure.instant :as inst]
             [clojure.data.xml :as xml]
             [clojure.spec.alpha :as s]
-            [org.soulspace.clj.namespace :as nsp]
+            ;[org.soulspace.clj.namespace :as nsp]
             [org.soulspace.clj.java.codec :as codec]
             [org.soulspace.xml.dsl.builder :as dsl]))
+
+;;
+;; Helper functions
+;;
+
+(defn remove-empty-keys
+  "Returns a map with all keys, for which the value is nil, are removed."
+  [m]
+  (into {} (remove (comp nil? val) m)))
+
+(defn format-number
+  "Formats the 'number' according to the C printf format 'fmt'"
+  [fmt number]
+  (cond
+    (= "%.f" fmt) (format "%f" (double number))
+    (= "%d" fmt) (format "%d" (long number))
+    (= "%g" fmt) (format "%g" (double number))
+    :else (str number)))
+
+;;;
+;;; INDI protocol implementation
+;;;
 
 (def protocol-version "1.7")
 
@@ -80,14 +115,9 @@
 (s/def :indi/setTextVector (s/keys :req [:indi/device :indi/name]))
 
 
-;;
-;; INDI Protocol Command Parsing
-;;
-
-(defn remove-empty-keys
-  "Returns a map with all keys, for which the value is nil, are removed."
-  [m]
-  (into {} (remove (comp nil? val) m)))
+;;;
+;;; INDI Protocol Command Parsing
+;;;
 
 ;;
 ;; Parse INDI XML Attributes
@@ -103,14 +133,14 @@
   "Returns the parsed number value."
   ([n]
    (str/trim (str/join n)))
-  ([format n]
+  ([fmt n]
    (str/trim (str/join n))))
 
 (defn parse-time-value
   "Returns the parsed time value."
   [t]
   (when (seq t)
-    (clojure.instant/read-instant-timestamp t)))
+    (inst/read-instant-timestamp t)))
 
 (defn parse-property-state
   "Returns the parsed switch value as keyword."
@@ -142,296 +172,296 @@
 ;;
 
 (defn parse-getProperties
-  "Returns the parsed map for the element."
+  "Returns the parsed map for the element getProperties."
   [element]
   {:indi/type :indi/getProperties
    :indi/version (get-in element [:attrs :version])
-   :indi/device (get-in element [:attrs :device])
-   :indi/name (get-in element [:attrs :name])})
+   :indi/device  (get-in element [:attrs :device])
+   :indi/name    (get-in element [:attrs :name])})
 
 (defn parse-delProperty
-  "Returns the parsed map for the element."
+  "Returns the parsed map for the elementdelProperty."
   [element]
   {:indi/type :indi/delProperty
-   :indi/device (get-in element [:attrs :device])
-   :indi/name (get-in element [:attrs :name])
+   :indi/device    (get-in element [:attrs :device])
+   :indi/name      (get-in element [:attrs :name])
    :indi/timestamp (parse-time-value (get-in element [:attrs :timestamp]))
-   :indi/message (get-in element [:attrs :message])})
+   :indi/message   (get-in element [:attrs :message])})
 
 (defn parse-defBLOB
-  "Returns the parsed map for the element."
+  "Returns the parsed map for the element defBLOB."
   [element]
   {:indi/type :indi/defBLOB
    :indi/device (get-in element [:attrs :device])
-   :indi/name (get-in element [:attrs :name])})
+   :indi/name   (get-in element [:attrs :name])})
 
 (defn parse-oneBLOB
-  "Returns the parsed map for the element."
+  "Returns the parsed map for the element oneBLOB."
   [element]
   {:indi/type :indi/oneBLOB
-   :indi/name (get-in element [:attrs :name])
-   :indi/size (parse-number-value (get-in element [:attrs :size]))
+   :indi/name   (get-in element [:attrs :name])
+   :indi/size   (parse-number-value (get-in element [:attrs :size]))
    :indi/format (get-in element [:attrs :format])
-   :indi/value (:content element)})
+   :indi/value  (:content element)})
 
 (defn parse-defBLOBVector
-  "Returns the parsed map for the element."
+  "Returns the parsed map for the element defBLOBVector."
   [element]
   {:indi/type :indi/defBLOBVector
-   :indi/device (get-in element [:attrs :device])
-   :indi/name (get-in element [:attrs :name])
-   :indi/label (get-in element [:attrs :label])
-   :indi/group (get-in element [:attrs :group])
-   :indi/state (parse-state (get-in element [:attrs :state]))
-   :indi/perm (parse-permission (get-in element [:attrs :perm]))
-   :indi/timeout (parse-number-value (get-in element [:attrs :timeout]))
+   :indi/device    (get-in element [:attrs :device])
+   :indi/name      (get-in element [:attrs :name])
+   :indi/label     (get-in element [:attrs :label])
+   :indi/group     (get-in element [:attrs :group])
+   :indi/state     (parse-state (get-in element [:attrs :state]))
+   :indi/perm      (parse-permission (get-in element [:attrs :perm]))
+   :indi/timeout   (parse-number-value (get-in element [:attrs :timeout]))
    :indi/timestamp (parse-time-value (get-in element [:attrs :timestamp]))
-   :indi/message (get-in element [:attrs :message])
-   :indi/values (map parse-defBLOB (:content element))})
+   :indi/message   (get-in element [:attrs :message])
+   :indi/values    (map parse-defBLOB (:content element))})
 
 (defn parse-newBLOBVector
-  "Returns the parsed map for the element."
+  "Returns the parsed map for the element newBLOBVector."
   [element]
   {:indi/type :indi/newBLOBVector
-   :indi/device (get-in element [:attrs :device])
-   :indi/name (get-in element [:attrs :name])
+   :indi/device    (get-in element [:attrs :device])
+   :indi/name      (get-in element [:attrs :name])
    :indi/timestamp (parse-time-value (get-in element [:attrs :timestamp]))
-   :indi/values (map parse-oneBLOB (:content element))})
+   :indi/values    (map parse-oneBLOB (:content element))})
 
 (defn parse-setBLOBVector
-  "Returns the parsed map for the element."
+  "Returns the parsed map for the element setBLOBVector."
   [element]
   {:indi/type :indi/setBLOBVector
-   :indi/device (get-in element [:attrs :device])
-   :indi/name (get-in element [:attrs :name])
-   :indi/state (parse-state (get-in element [:attrs :state]))
-   :indi/timeout (parse-number-value (get-in element [:attrs :timeout]))
+   :indi/device    (get-in element [:attrs :device])
+   :indi/name      (get-in element [:attrs :name])
+   :indi/state     (parse-state (get-in element [:attrs :state]))
+   :indi/timeout   (parse-number-value (get-in element [:attrs :timeout]))
    :indi/timestamp (parse-time-value (get-in element [:attrs :timestamp]))
-   :indi/message (get-in element [:attrs :message])
-   :indi/values (map parse-oneBLOB (:content element))})
+   :indi/message   (get-in element [:attrs :message])
+   :indi/values    (map parse-oneBLOB (:content element))})
 
 (defn parse-defLight
-  "Returns the parsed map for the element."
+  "Returns the parsed map for the element defLight."
   [element]
   {:indi/type :indi/defLight
    :indi/device (get-in element [:attrs :device])
-   :indi/name (get-in element [:attrs :name])
-   :indi/value (:content element)})
+   :indi/name   (get-in element [:attrs :name])
+   :indi/value  (:content element)})
 
 (defn parse-oneLight
-  "Returns the parsed map for the element."
+  "Returns the parsed map for the element oneLight."
   [element]
   {:indi/type :indi/oneLight
-   :indi/name (get-in element [:attrs :name])
+   :indi/name  (get-in element [:attrs :name])
    :indi/value (:content element)})
 
 (defn parse-defLightVector
-  "Returns the parsed map for the element."
+  "Returns the parsed map for the element defLightVector."
   [element]
   {:indi/type :indi/defLightVector
-   :indi/device (get-in element [:attrs :device])
-   :indi/name (get-in element [:attrs :name])
-   :indi/label (get-in element [:attrs :label])
-   :indi/group (get-in element [:attrs :group])
-   :indi/state (parse-state (get-in element [:attrs :state]))
+   :indi/device    (get-in element [:attrs :device])
+   :indi/name      (get-in element [:attrs :name])
+   :indi/label     (get-in element [:attrs :label])
+   :indi/group     (get-in element [:attrs :group])
+   :indi/state     (parse-state (get-in element [:attrs :state]))
    :indi/timestamp (parse-time-value (get-in element [:attrs :timestamp]))
-   :indi/message (get-in element [:attrs :message])
-   :indi/values (map parse-defLight (:content element))})
+   :indi/message   (get-in element [:attrs :message])
+   :indi/values    (map parse-defLight (:content element))})
 
 (defn parse-newLightVector
-  "Returns the parsed map for the element."
+  "Returns the parsed map for the element newLightVector."
   [element]
   {:indi/type :indi/newLightVector
-   :indi/device (get-in element [:attrs :device])
-   :indi/name (get-in element [:attrs :name])
+   :indi/device    (get-in element [:attrs :device])
+   :indi/name      (get-in element [:attrs :name])
    :indi/timestamp (parse-time-value (get-in element [:attrs :timestamp]))
-   :indi/values (map parse-oneLight (:content element))})
+   :indi/values    (map parse-oneLight (:content element))})
 
 (defn parse-setLightVector
-  "Returns the parsed map for the element."
+  "Returns the parsed map for the element setLightVector."
   [element]
   {:indi/type :indi/setLightVector
-   :indi/device (get-in element [:attrs :device])
-   :indi/name (get-in element [:attrs :name])
-   :indi/state (parse-state (get-in element [:attrs :state]))
+   :indi/device    (get-in element [:attrs :device])
+   :indi/name      (get-in element [:attrs :name])
+   :indi/state     (parse-state (get-in element [:attrs :state]))
 ;   :timeout ""
    :indi/timestamp (parse-time-value (get-in element [:attrs :timestamp]))
-   :indi/message (get-in element [:attrs :message])
-   :indi/values (map parse-oneLight (:content element))})
+   :indi/message   (get-in element [:attrs :message])
+   :indi/values    (map parse-oneLight (:content element))})
 
 (defn parse-defNumber
-  "Returns the parsed map for the element."
+  "Returns the parsed map for the element defNumber."
   [element]
   {:indi/type :indi/defNumber
-   :indi/name (get-in element [:attrs :name])
-   :indi/label (get-in element [:attrs :label])
+   :indi/name   (get-in element [:attrs :name])
+   :indi/label  (get-in element [:attrs :label])
    :indi/format (parse-number-format (get-in element [:attrs :format]))
-   :indi/min (parse-number-value (get-in element [:attrs :min]))
-   :indi/max (parse-number-value (get-in element [:attrs :max]))
-   :indi/step (parse-number-value (get-in element [:attrs :step]))
-   :indi/value (parse-number-value (:content element))})
+   :indi/min    (parse-number-value (get-in element [:attrs :min]))
+   :indi/max    (parse-number-value (get-in element [:attrs :max]))
+   :indi/step   (parse-number-value (get-in element [:attrs :step]))
+   :indi/value  (parse-number-value (:content element))})
 
 (defn parse-oneNumber
-  "Returns the parsed map for the element."
+  "Returns the parsed map for the element oneNumber."
   [element]
   {:indi/type :indi/oneNumber
-   :indi/name (get-in element [:attrs :name])
+   :indi/name  (get-in element [:attrs :name])
    :indi/value (parse-number-value (:content element))})
 
 (defn parse-defNumberVector
-  "Returns the parsed map for the element."
+  "Returns the parsed map for the element defNumberVector."
   [element]
   {:indi/type :indi/defNumberVector
-   :indi/device (get-in element [:attrs :device])
-   :indi/name (get-in element [:attrs :name])
-   :indi/label (get-in element [:attrs :label])
-   :indi/group (get-in element [:attrs :group])
-   :indi/state (parse-state (get-in element [:attrs :state]))
-   :indi/perm (parse-permission (get-in element [:attrs :perm]))
-   :indi/timeout (parse-number-value (get-in element [:attrs :timeout]))
+   :indi/device    (get-in element [:attrs :device])
+   :indi/name      (get-in element [:attrs :name])
+   :indi/label     (get-in element [:attrs :label])
+   :indi/group     (get-in element [:attrs :group])
+   :indi/state     (parse-state (get-in element [:attrs :state]))
+   :indi/perm      (parse-permission (get-in element [:attrs :perm]))
+   :indi/timeout   (parse-number-value (get-in element [:attrs :timeout]))
    :indi/timestamp (parse-time-value (get-in element [:attrs :timestamp]))
-   :indi/message (get-in element [:attrs :message])
-   :indi/values (map parse-defNumber (:content element))})
+   :indi/message   (get-in element [:attrs :message])
+   :indi/values    (map parse-defNumber (:content element))})
 
 (defn parse-newNumberVector
-  "Returns the parsed map for the element."
+  "Returns the parsed map for the element newNumberVector."
   [element]
   {:indi/type :indi/newNumberVector
-   :indi/device (get-in element [:attrs :device])
-   :indi/name (get-in element [:attrs :name])
+   :indi/device    (get-in element [:attrs :device])
+   :indi/name      (get-in element [:attrs :name])
    :indi/timestamp (parse-time-value (get-in element [:attrs :timestamp]))
-   :indi/values (map parse-oneNumber (:content element))})
+   :indi/values    (map parse-oneNumber (:content element))})
 
 (defn parse-setNumberVector
-  "Returns the parsed map for the element."
+  "Returns the parsed map for the element setNumberVector."
   [element]
   {:indi/type :indi/setNumberVector
-   :indi/device (get-in element [:attrs :device])
-   :indi/name (get-in element [:attrs :name])
-   :indi/state (parse-state (get-in element [:attrs :state]))
-   :indi/timeout (parse-number-value (get-in element [:attrs :timeout]))
+   :indi/device    (get-in element [:attrs :device])
+   :indi/name      (get-in element [:attrs :name])
+   :indi/state     (parse-state (get-in element [:attrs :state]))
+   :indi/timeout   (parse-number-value (get-in element [:attrs :timeout]))
    :indi/timestamp (parse-time-value (get-in element [:attrs :timestamp]))
-   :indi/message (get-in element [:attrs :message])
-   :indi/values (map parse-oneNumber (:content element))})
+   :indi/message   (get-in element [:attrs :message])
+   :indi/values    (map parse-oneNumber (:content element))})
 
 (defn parse-defSwitch
-  "Returns the parsed map for the element."
+  "Returns the parsed map for the element defSwitch."
   [element]
   {:indi/type :indi/defSwitch
-   :indi/name (get-in element [:attrs :name])
+   :indi/name  (get-in element [:attrs :name])
    :indi/label (get-in element [:attrs :label])
    :indi/value (parse-switch-state (:content element))})
 
 (defn parse-oneSwitch
-  "Returns the parsed map for the element."
+  "Returns the parsed map for the element oneSwitch."
   [element]
   {:indi/type :indi/oneSwitch
-   :indi/name (get-in element [:attrs :name])
+   :indi/name  (get-in element [:attrs :name])
    :indi/value (parse-switch-state (:content element))})
 
 (defn parse-defSwitchVector
-  "Returns the parsed map for the element."
+  "Returns the parsed map for the element defSwitchVector."
   [element]
   {:indi/type :indi/defSwitchVector
-   :indi/device (get-in element [:attrs :device])
-   :indi/name (get-in element [:attrs :name])
-   :indi/label (get-in element [:attrs :label])
-   :indi/group (get-in element [:attrs :group])
-   :indi/state (parse-state (get-in element [:attrs :state]))
-   :indi/perm (parse-permission (get-in element [:attrs :perm]))
-   :indi/rule (get-in element [:attrs :rule])
-   :indi/timeout (parse-number-value (get-in element [:attrs :timeout]))
+   :indi/device    (get-in element [:attrs :device])
+   :indi/name      (get-in element [:attrs :name])
+   :indi/label     (get-in element [:attrs :label])
+   :indi/group     (get-in element [:attrs :group])
+   :indi/state     (parse-state (get-in element [:attrs :state]))
+   :indi/perm      (parse-permission (get-in element [:attrs :perm]))
+   :indi/rule      (get-in element [:attrs :rule])
+   :indi/timeout   (parse-number-value (get-in element [:attrs :timeout]))
    :indi/timestamp (parse-time-value (get-in element [:attrs :timestamp]))
-   :indi/message (get-in element [:attrs :message])
-   :indi/values (map parse-defSwitch (:content element))})
+   :indi/message   (get-in element [:attrs :message])
+   :indi/values    (map parse-defSwitch (:content element))})
 
 (defn parse-newSwitchVector
-  "Returns the parsed map for the element."
+  "Returns the parsed map for the element newSwitchVector."
   [element]
   {:indi/type :indi/newSwitchVector
-   :indi/device (get-in element [:attrs :device])
-   :indi/name (get-in element [:attrs :name])
+   :indi/device    (get-in element [:attrs :device])
+   :indi/name      (get-in element [:attrs :name])
    :indi/timestamp (parse-time-value (get-in element [:attrs :timestamp]))
-   :indi/values (map parse-oneSwitch (:content element))})
+   :indi/values    (map parse-oneSwitch (:content element))})
 
 (defn parse-setSwitchVector
-  "Returns the parsed map for the element."
+  "Returns the parsed map for the element setSwitchVector."
   [element]
   {:indi/type :indi/setSwitchVector
-   :indi/device (get-in element [:attrs :device])
-   :indi/name (get-in element [:attrs :name])
-   :indi/state (parse-state (get-in element [:attrs :state]))
-   :indi/timeout (parse-number-value (get-in element [:attrs :timeout]))
+   :indi/device    (get-in element [:attrs :device])
+   :indi/name      (get-in element [:attrs :name])
+   :indi/state     (parse-state (get-in element [:attrs :state]))
+   :indi/timeout   (parse-number-value (get-in element [:attrs :timeout]))
    :indi/timestamp (parse-time-value (get-in element [:attrs :timestamp]))
-   :indi/message (get-in element [:attrs :message])
-   :indi/values (map parse-oneSwitch (:content element))})
+   :indi/message   (get-in element [:attrs :message])
+   :indi/values    (map parse-oneSwitch (:content element))})
 
 (defn parse-defText
-  "Returns the parsed map for the element."
+  "Returns the parsed map for the element defText."
   [element]
   {:indi/type :indi/defText
-   :indi/name (get-in element [:attrs :name])
+   :indi/name  (get-in element [:attrs :name])
    :indi/label (get-in element [:attrs :label])
    :indi/value (parse-text-value (:content element))})
 
 (defn parse-oneText
-  "Returns the parsed map for the element."
+  "Returns the parsed map for the element oneText."
   [element]
   {:indi/type :indi/oneText
-   :indi/name (get-in element [:attrs :name])
+   :indi/name  (get-in element [:attrs :name])
    :indi/value (parse-text-value (:content element))})
 
 (defn parse-defTextVector
-  "Returns the parsed map for the element."
+  "Returns the parsed map for the element defTextVector."
   [element]
   {:indi/type :indi/defTextVector
-   :indi/device (get-in element [:attrs :device])
-   :indi/name (get-in element [:attrs :name])
-   :indi/label (get-in element [:attrs :label])
-   :indi/group (get-in element [:attrs :group])
-   :indi/state (parse-state (get-in element [:attrs :state]))
-   :indi/perm (parse-permission (get-in element [:attrs :perm]))
-   :indi/timeout (parse-number-value (get-in element [:attrs :timeout]))
+   :indi/device    (get-in element [:attrs :device])
+   :indi/name      (get-in element [:attrs :name])
+   :indi/label     (get-in element [:attrs :label])
+   :indi/group     (get-in element [:attrs :group])
+   :indi/state     (parse-state (get-in element [:attrs :state]))
+   :indi/perm      (parse-permission (get-in element [:attrs :perm]))
+   :indi/timeout   (parse-number-value (get-in element [:attrs :timeout]))
    :indi/timestamp (parse-time-value (get-in element [:attrs :timestamp]))
-   :indi/message (get-in element [:attrs :message])
-   :indi/values (map parse-defText (:content element))})
+   :indi/message   (get-in element [:attrs :message])
+   :indi/values    (map parse-defText (:content element))})
 
 (defn parse-newTextVector
-  "Returns the parsed map for the element."
+  "Returns the parsed map for the element newTextVector."
   [element]
   {:indi/type :indi/newTextVector
-   :indi/device (get-in element [:attrs :device])
-   :indi/name (get-in element [:attrs :name])
+   :indi/device    (get-in element [:attrs :device])
+   :indi/name      (get-in element [:attrs :name])
    :indi/timestamp (parse-time-value (get-in element [:attrs :timestamp]))
-   :indi/values (map parse-oneText (:content element))})
+   :indi/values    (map parse-oneText (:content element))})
 
 (defn parse-setTextVector
-  "Returns the parsed map for the element."
+  "Returns the parsed map for the element setTextVector."
   [element]
   {:indi/type :indi/setTextVector
-   :indi/device (get-in element [:attrs :device])
-   :indi/name (get-in element [:attrs :name])
-   :indi/state (parse-state (get-in element [:attrs :state]))
-   :indi/timeout (parse-number-value (get-in element [:attrs :timeout]))
+   :indi/device    (get-in element [:attrs :device])
+   :indi/name      (get-in element [:attrs :name])
+   :indi/state     (parse-state (get-in element [:attrs :state]))
+   :indi/timeout   (parse-number-value (get-in element [:attrs :timeout]))
    :indi/timestamp (parse-time-value (get-in element [:attrs :timestamp]))
-   :indi/message (get-in element [:attrs :message])
-   :indi/values (map parse-oneText (:content element))})
+   :indi/message   (get-in element [:attrs :message])
+   :indi/values    (map parse-oneText (:content element))})
 
 (defn parse-enableBLOB
-  "Returns the parsed map for the element."
+  "Returns the parsed map for the element enableBLOB."
   [element]
   {:indi/type :indi/enableBLOB
    :indi/device (get-in element [:attrs :device])
-   :indi/name (get-in element [:attrs :name])
-   :indi/value (:content element)})
+   :indi/name   (get-in element [:attrs :name])
+   :indi/value  (:content element)})
 
 (defn parse-message
-  "Returns the parsed map for the element."
+  "Returns the parsed map for the element message."
   [element]
   {:indi/type :indi/message
-   :indi/device (get-in element [:attrs :device])
+   :indi/device    (get-in element [:attrs :device])
    :indi/timestamp (parse-time-value (get-in element [:attrs :timestamp]))
-   :indi/message (get-in element [:attrs :message])})
+   :indi/message   (get-in element [:attrs :message])})
 
 (defn parse-indi
   "Returns the list of parsed maps for the element."
@@ -460,6 +490,7 @@
       (= tag :setTextVector) (parse-setTextVector element))))
 
 (defn parse-xml
+  "Returns the data parsed from the INDI XML"
   [input]
   ;; (println "parse-xml" input)
   (->> (xml/parse input)
@@ -490,19 +521,6 @@
               "newBLOBVector" "newLightVector" "newNumberVector" "newSwitchVector" "newTextVector"
               "oneBLOB" "oneLight" "oneNumber" "oneSwitch" "oneText"
               "setBLOBVector" "setLightVector" "setNumberVector" "setSwitchVector" "setTextVector"])
-
-;;
-;; Helper functions
-;;
-
-(defn format-number
-  "Formats the 'number' according to the C printf format 'fmt'"
-  [fmt number]
-  (cond
-    (= "%.f" fmt) (format "%f" (double number))
-    (= "%d" fmt) (format "%d" (long number))
-    (= "%g" fmt) (format "%g" (double number))
-    :else (str number)))
 
 ;;
 ;; Property methods
