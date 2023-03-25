@@ -1,3 +1,15 @@
+;;;;
+;;;;   Copyright (c) Ludger Solbach. All rights reserved.
+;;;;
+;;;;   The use and distribution terms for this software are covered by the
+;;;;   Eclipse Public License 1.0 (http://opensource.org/licenses/eclipse-1.0.php)
+;;;;   which can be found in the file license.txt at the root of this distribution.
+;;;;   By using this software in any fashion, you are agreeing to be bound by
+;;;;   the terms of this license.
+;;;;
+;;;;   You must not remove this notice, or any other, from this software.
+;;;;
+
 (ns org.soulspace.astronomy.indi.example.time-driver
   (:require [clojure.data.xml :as xml]
             [org.soulspace.astronomy.indi.common :as ic]
@@ -10,79 +22,79 @@
 ;;
 (def state
   (atom
-    {:devices {"TimeDevice1" {"DRIVER_INFO" {:type :indi/text-vector
-                                             :name "DRIVER_INFO"
+   {:devices {"TimeDevice1" {"DRIVER_INFO" {:type :indi/text-vector
+                                            :name "DRIVER_INFO"
+                                            :device "TimeDevice1"
+                                            :group "General Info"
+                                            :label "Driver Info"
+                                            :state "Idle"
+                                            :perm :indi/ro
+                                            :timeout "0"
+                                            :values {"DRIVER_NAME"      {:type :indi/text
+                                                                         :name "DRIVER_NAME"
+                                                                         :label "Name"
+                                                                         :value "TimeDriver"}
+                                                     "DRIVER_EXEC"      {:type :indi/text
+                                                                         :name "DRIVER_EXEC"
+                                                                         :label "Exec"
+                                                                         :value "indi4clj.example.time-driver"}
+                                                     "DRIVER_VERSION"   {:type :indi/text
+                                                                         :name "DRIVER_VERSION"
+                                                                         :label "Version"
+                                                                         :value "0.1"}
+                                                     "DRIVER_INTERFACE" {:type :indi/text
+                                                                         :name "DRIVER_INTERFACE"
+                                                                         :label "Interface"
+                                                                         :value "1"}}}
+                             "CONNECTION" {:type :indi/switch-vector
+                                           :name "CONNECTION"
+                                           :device "TimeDevice1"
+                                           :group "Main Control"
+                                           :label "Connection"
+                                           :rule "OneOfMany"
+                                           :state "Idle"
+                                           :perm :indi/rw
+                                           :timeout "60"
+                                           :values {"CONNECT"    {:type :indi/switch
+                                                                  :name "CONNECT"
+                                                                  :label "Connect"
+                                                                  :value :indi/Off}
+                                                    "DISCONNECT" {:type :indi/switch
+                                                                  :name "DISCONNECT"
+                                                                  :label "Disconnect"
+                                                                  :value :indi/On}}}
+                             "POLLING_PERIOD" {:type :indi/number-vector
+                                               :name "POLLING_PERIOD"
+                                               :device "TimeDevice1"
+                                               :group "Options"
+                                               :label "Polling"
+                                               :state "Idle"
+                                               :perm :indi/rw
+                                               :timeout "30"
+                                               :values {"PERIOD_MS" {:type :indi/number
+                                                                     :name "PERIOD_MS"
+                                                                     :label "Period (ms)"
+                                                                     :format "%d"
+                                                                     :min 10
+                                                                     :max 600000
+                                                                     :step 1000
+                                                                     :value 10000}}}
+                             "CURRENT_TIME" {:type :indi/number-vector
+                                             :name "CURRENT_TIME"
                                              :device "TimeDevice1"
-                                             :group "General Info"
-                                             :label "Driver Info"
+                                             :group "Time"
+                                             :label "Current Time"
                                              :state "Idle"
                                              :perm :indi/ro
                                              :timeout "0"
-                                             :values {"DRIVER_NAME"      {:type :indi/text
-                                                                          :name "DRIVER_NAME"
-                                                                          :label "Name"
-                                                                          :value "TimeDriver"}
-                                                      "DRIVER_EXEC"      {:type :indi/text
-                                                                          :name "DRIVER_EXEC"
-                                                                          :label "Exec"
-                                                                          :value "indi4clj.example.time-driver"}
-                                                      "DRIVER_VERSION"   {:type :indi/text
-                                                                          :name "DRIVER_VERSION"
-                                                                          :label "Version"
-                                                                          :value "0.1"}
-                                                      "DRIVER_INTERFACE" {:type :indi/text
-                                                                          :name "DRIVER_INTERFACE"
-                                                                          :label "Interface"
-                                                                          :value "1"}}}
-                              "CONNECTION" {:type :indi/switch-vector
-                                            :name "CONNECTION"
-                                            :device "TimeDevice1"
-                                            :group "Main Control"
-                                            :label "Connection"
-                                            :rule "OneOfMany"
-                                            :state "Idle"
-                                            :perm :indi/rw
-                                            :timeout "60"
-                                            :values {"CONNECT"    {:type :indi/switch
-                                                                   :name "CONNECT"
-                                                                   :label "Connect"
-                                                                   :value :indi/Off}
-                                                     "DISCONNECT" {:type :indi/switch
-                                                                   :name "DISCONNECT"
-                                                                   :label "Disconnect"
-                                                                   :value :indi/On}}}
-                              "POLLING_PERIOD" {:type :indi/number-vector
-                                                :name "POLLING_PERIOD"
-                                                :device "TimeDevice1"
-                                                :group "Options"
-                                                :label "Polling"
-                                                :state "Idle"
-                                                :perm :indi/rw
-                                                :timeout "30"
-                                                :values {"PERIOD_MS" {:type :indi/number
-                                                                      :name "PERIOD_MS"
-                                                                      :label "Period (ms)"
-                                                                      :format "%d"
-                                                                      :min 10
-                                                                      :max 600000
-                                                                      :step 1000
-                                                                      :value 10000}}}
-                              "CURRENT_TIME" {:type :indi/number-vector
-                                              :name "CURRENT_TIME"
-                                              :device "TimeDevice1"
-                                              :group "Time"
-                                              :label "Current Time"
-                                              :state "Idle"
-                                              :perm :indi/ro
-                                              :timeout "0"
-                                              :values {"CURRENT_TIME_MS" {:type :indi/number
-                                                                          :name "CURRENT_TIME_MS"
-                                                                          :label "Current Time (ms)"
-                                                                          :format "%d"
-                                                                          :min 0
-                                                                          :max 0
-                                                                          :step 100
-                                                                          :value 1596663312781}}}}}}))
+                                             :values {"CURRENT_TIME_MS" {:type :indi/number
+                                                                         :name "CURRENT_TIME_MS"
+                                                                         :label "Current Time (ms)"
+                                                                         :format "%d"
+                                                                         :min 0
+                                                                         :max 0
+                                                                         :step 100
+                                                                         :value 1596663312781}}}}}}))
 ;;
 ;; Handlers
 ;;
@@ -100,18 +112,18 @@
 
 (defn get-properties
   ([]
-    (let [d-names (keys (:devices @state))]
-      (doseq [d-name d-names]
-        (get-properties d-name))))
+   (let [d-names (keys (:devices @state))]
+     (doseq [d-name d-names]
+       (get-properties d-name))))
   ([d-name]
-    (send-command (ip/del-property {:device d-name}))
-    (let [device (ic/device @state d-name)
-          p-names (keys device)]
-    (doseq [cmd (map ipg/def-type-vector (ic/properties @state d-name))]
-      (send-command cmd))))
+   (send-command (ip/del-property {:device d-name}))
+   (let [device (ic/device @state d-name)
+         p-names (keys device)]
+     (doseq [cmd (map ipg/def-type-vector (ic/properties @state d-name))]
+       (send-command cmd))))
   ([d-name p-name]
-    (if-let [p (ic/property d-name p-name)]
-      (send-command (ipg/def-type-vector p)))))
+   (if-let [p (ic/property d-name p-name)]
+     (send-command (ipg/def-type-vector p)))))
 
 (defn def-property
   [p]
@@ -145,22 +157,21 @@
 (defmethod handle-command :indi/newTextVector)
 
 
-(def in-chan )
-(def out-chan )
+(def in-chan)
+(def out-chan)
+
 
 ; TODO: initialize channels
 (defn init
-  [in out]
-  
-  )
+  [in out])
 
 
 (comment
   ; deftype?
-(defrecord TimeDriver [in-chan out-chan]
-  INDIDriver
-  (send-command [this cmd] ) ; not specific of a concrete driver
-  (handle-command [this cmd] ) ; not specific of a concrete driver
-  (handle-get-properties [this cmd] ) ; not specific of a concrete driver
-  (handle-new-type-vector [this cmd]) ; specific for a driver
-  ))
+  (defrecord TimeDriver [in-chan out-chan]
+    INDIDriver
+    (send-command [this cmd]) ; not specific of a concrete driver
+    (handle-command [this cmd]) ; not specific of a concrete driver
+    (handle-get-properties [this cmd]) ; not specific of a concrete driver
+    (handle-new-type-vector [this cmd]) ; specific for a driver
+    ))
